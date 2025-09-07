@@ -5,196 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🧮 Calcul Mental - Application Interactive</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #4caf50, #66bb6a);
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
-        
-        .cta-buttons {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .btn-primary {
-            display: inline-block;
-            padding: 20px 40px;
-            background: linear-gradient(135deg, #4caf50, #66bb6a);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 10px;
-            box-shadow: 0 4px 15px rgba(76,175,80,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(76,175,80,0.4);
-        }
-        
-        .btn-secondary {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #2196f3, #64b5f6);
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            margin: 10px;
-            box-shadow: 0 4px 15px rgba(33,150,243,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(33,150,243,0.4);
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .feature {
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .feature h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #4caf50;
-        }
-        
-        .feature p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-        
-        .levels {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-        
-        .levels h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #4caf50;
-            font-size: 2rem;
-        }
-        
-        .level-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        .level-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .level-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .level-card p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: #333;
-            color: white;
-            border-radius: 12px;
-            margin-top: 40px;
-        }
-        
-        .footer a {
-            color: #4caf50;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .header p {
-                font-size: 1.1rem;
-            }
-            
-            .btn-primary {
-                font-size: 1.2rem;
-                padding: 15px 30px;
-            }
-            
-            .container {
-                margin: 10px;
-                padding: 15px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="index-styles.css">
 </head>
 <body>
     <div class="container">
@@ -398,6 +209,16 @@
                         </ul>
                     </div>
                 </div>
+                
+                <div style="background: #fff3e0; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #ff9800;">
+                    <h4 style="color: #e65100; margin-bottom: 10px;">🔒 Respect du RGPD</h4>
+                    <p style="color: #333; margin: 0; font-size: 0.9rem;">
+                        <strong>Aucune donnée personnelle collectée :</strong> Cette application fonctionne entièrement dans votre navigateur. 
+                        Aucune information n'est transmise, stockée ou analysée sur nos serveurs. 
+                        Vos réponses et progrès restent privés et locaux à votre appareil.
+                    </p>
+                </div>
+                </div>
             </div>
             
             <div style="background: #f8f9fa; padding: 40px; border-radius: 15px;">
@@ -433,6 +254,7 @@
             <p>🆓 <strong>Entièrement libre et gratuit</strong></p>
             <p>Utilisable en classe, à la maison, sans restriction</p>
             <p>Code source disponible sur <a href="https://github.com/shwabnitz/ecole-treilles">GitHub</a></p>
+            <p style="margin-top: 15px; opacity: 0.9;">🤖 Développé avec l'assistance d'une intelligence artificielle</p>
             <p style="margin-top: 20px; opacity: 0.8;">Fait avec ❤️ pour l'éducation française</p>
         </div>
     </div>

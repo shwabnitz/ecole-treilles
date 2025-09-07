@@ -1,22 +1,334 @@
-[
-    {"type": "multiplication", "question": "25 × 16", "reponse": 400, "categorie": "calcul"},
-    {"type": "division", "question": "144 ÷ 12", "reponse": 12, "categorie": "calcul"},
-    {"type": "fraction", "question": "1/2 + 1/4", "reponse": 0.75, "categorie": "fraction"},
-    {"type": "decimal", "question": "12.5 + 7.8", "reponse": 20.3, "categorie": "decimal"},
-    {"type": "multiplication", "question": "18 × 15", "reponse": 270, "categorie": "calcul"},
-    {"type": "division", "question": "168 ÷ 14", "reponse": 12, "categorie": "calcul"},
-    {"type": "decimal", "question": "15.6 - 8.9", "reponse": 6.7, "categorie": "decimal"},
-    {"type": "multiplication", "question": "23 × 12", "reponse": 276, "categorie": "calcul"},
-    {"type": "division", "question": "195 ÷ 15", "reponse": 13, "categorie": "calcul"},
-    {"type": "decimal", "question": "9.4 + 6.8", "reponse": 16.2, "categorie": "decimal"},
-    {"type": "multiplication", "question": "27 × 14", "reponse": 378, "categorie": "calcul"},
-    {"type": "division", "question": "216 ÷ 18", "reponse": 12, "categorie": "calcul"},
-    {"type": "decimal", "question": "18.7 - 9.9", "reponse": 8.8, "categorie": "decimal"},
-    {"type": "multiplication", "question": "19 × 16", "reponse": 304, "categorie": "calcul"},
-    {"type": "division", "question": "234 ÷ 13", "reponse": 18, "categorie": "calcul"},
-    {"type": "decimal", "question": "13.2 + 8.6", "reponse": 21.8, "categorie": "decimal"},
-    {"type": "multiplication", "question": "21 × 18", "reponse": 378, "categorie": "calcul"},
-    {"type": "division", "question": "252 ÷ 21", "reponse": 12, "categorie": "calcul"},
-    {"type": "decimal", "question": "16.5 - 7.8", "reponse": 8.7, "categorie": "decimal"},
-    {"type": "multiplication", "question": "24 × 17", "reponse": 408, "categorie": "calcul"}
-]
+{
+  "etapes": [
+    {
+      "nom": "Révisions CM1",
+      "description": "Consolidation des acquis CM1",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "25 × 16",
+          "reponse": 400,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "144 ÷ 12",
+          "reponse": 12,
+          "categorie": "calcul"
+        },
+        {
+          "type": "fraction",
+          "question": "1/2 + 1/4",
+          "reponse": 0.75,
+          "categorie": "fraction"
+        },
+        {
+          "type": "decimal",
+          "question": "12.5 + 7.8",
+          "reponse": 20.3,
+          "categorie": "decimal"
+        },
+        {
+          "type": "multiplication",
+          "question": "26 × 16",
+          "reponse": 416,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "26 × 16",
+          "reponse": 416,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "26 × 16",
+          "reponse": 416,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "26 × 16",
+          "reponse": 416,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "26 × 16",
+          "reponse": 416,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "26 × 16",
+          "reponse": 416,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Décimaux simples",
+      "description": "Opérations simples avec décimaux",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "18 × 15",
+          "reponse": 270,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "168 ÷ 14",
+          "reponse": 12,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "15.6 - 8.9",
+          "reponse": 6.7,
+          "categorie": "decimal"
+        },
+        {
+          "type": "multiplication",
+          "question": "23 × 12",
+          "reponse": 276,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 15",
+          "reponse": 285,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 15",
+          "reponse": 285,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 15",
+          "reponse": 285,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 15",
+          "reponse": 285,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 15",
+          "reponse": 285,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 15",
+          "reponse": 285,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Fractions",
+      "description": "Opérations avec fractions simples",
+      "exercices": [
+        {
+          "type": "division",
+          "question": "195 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "9.4 + 6.8",
+          "reponse": 16.2,
+          "categorie": "decimal"
+        },
+        {
+          "type": "multiplication",
+          "question": "27 × 14",
+          "reponse": 378,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "216 ÷ 18",
+          "reponse": 12,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "196 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "196 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "196 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "196 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "196 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "196 ÷ 15",
+          "reponse": 13,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Pourcentages",
+      "description": "Introduction aux pourcentages",
+      "exercices": [
+        {
+          "type": "decimal",
+          "question": "18.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "multiplication",
+          "question": "19 × 16",
+          "reponse": 304,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "234 ÷ 13",
+          "reponse": 18,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "13.2 + 8.6",
+          "reponse": 21.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "decimal",
+          "question": "19.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "decimal",
+          "question": "19.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "decimal",
+          "question": "19.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "decimal",
+          "question": "19.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "decimal",
+          "question": "19.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        },
+        {
+          "type": "decimal",
+          "question": "19.7 - 9.9",
+          "reponse": 8.8,
+          "categorie": "decimal"
+        }
+      ]
+    },
+    {
+      "nom": "Révisions",
+      "description": "Synthèse du niveau facile",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "21 × 18",
+          "reponse": 378,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "252 ÷ 21",
+          "reponse": 12,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "16.5 - 7.8",
+          "reponse": 8.7,
+          "categorie": "decimal"
+        },
+        {
+          "type": "multiplication",
+          "question": "24 × 17",
+          "reponse": 408,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "22 × 18",
+          "reponse": 396,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "22 × 18",
+          "reponse": 396,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "22 × 18",
+          "reponse": 396,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "22 × 18",
+          "reponse": 396,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "22 × 18",
+          "reponse": 396,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "22 × 18",
+          "reponse": 396,
+          "categorie": "calcul"
+        }
+      ]
+    }
+  ]
+}

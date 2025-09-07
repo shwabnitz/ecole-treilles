@@ -1,22 +1,334 @@
-[
-    {"type": "multiplication", "question": "12 × 5", "reponse": 60, "categorie": "calcul"},
-    {"type": "division", "question": "72 ÷ 8", "reponse": 9, "categorie": "calcul"},
-    {"type": "addition", "question": "125 + 89", "reponse": 214, "categorie": "calcul"},
-    {"type": "soustraction", "question": "156 - 78", "reponse": 78, "categorie": "calcul"},
-    {"type": "multiplication", "question": "11 × 7", "reponse": 77, "categorie": "calcul"},
-    {"type": "division", "question": "81 ÷ 9", "reponse": 9, "categorie": "calcul"},
-    {"type": "addition", "question": "134 + 67", "reponse": 201, "categorie": "calcul"},
-    {"type": "soustraction", "question": "187 - 59", "reponse": 128, "categorie": "calcul"},
-    {"type": "multiplication", "question": "13 × 6", "reponse": 78, "categorie": "calcul"},
-    {"type": "division", "question": "64 ÷ 8", "reponse": 8, "categorie": "calcul"},
-    {"type": "addition", "question": "149 + 73", "reponse": 222, "categorie": "calcul"},
-    {"type": "soustraction", "question": "203 - 85", "reponse": 118, "categorie": "calcul"},
-    {"type": "multiplication", "question": "15 × 4", "reponse": 60, "categorie": "calcul"},
-    {"type": "division", "question": "90 ÷ 6", "reponse": 15, "categorie": "calcul"},
-    {"type": "addition", "question": "167 + 84", "reponse": 251, "categorie": "calcul"},
-    {"type": "soustraction", "question": "218 - 79", "reponse": 139, "categorie": "calcul"},
-    {"type": "multiplication", "question": "14 × 5", "reponse": 70, "categorie": "calcul"},
-    {"type": "division", "question": "84 ÷ 7", "reponse": 12, "categorie": "calcul"},
-    {"type": "addition", "question": "158 + 96", "reponse": 254, "categorie": "calcul"},
-    {"type": "soustraction", "question": "235 - 88", "reponse": 147, "categorie": "calcul"}
-]
+{
+  "etapes": [
+    {
+      "nom": "Tables de multiplication",
+      "description": "Révision et maîtrise des tables",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "12 × 5",
+          "reponse": 60,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "72 ÷ 8",
+          "reponse": 9,
+          "categorie": "calcul"
+        },
+        {
+          "type": "addition",
+          "question": "125 + 89",
+          "reponse": 214,
+          "categorie": "calcul"
+        },
+        {
+          "type": "soustraction",
+          "question": "156 - 78",
+          "reponse": 78,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "13 × 5",
+          "reponse": 65,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "13 × 5",
+          "reponse": 65,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "13 × 5",
+          "reponse": 65,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "13 × 5",
+          "reponse": 65,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "13 × 5",
+          "reponse": 65,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "13 × 5",
+          "reponse": 65,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Division",
+      "description": "Division euclidienne simple",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "11 × 7",
+          "reponse": 77,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "81 ÷ 9",
+          "reponse": 9,
+          "categorie": "calcul"
+        },
+        {
+          "type": "addition",
+          "question": "134 + 67",
+          "reponse": 201,
+          "categorie": "calcul"
+        },
+        {
+          "type": "soustraction",
+          "question": "187 - 59",
+          "reponse": 128,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "12 × 7",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "12 × 7",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "12 × 7",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "12 × 7",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "12 × 7",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "12 × 7",
+          "reponse": 84,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Calculs jusqu'à 1000",
+      "description": "Opérations avec grands nombres",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "13 × 6",
+          "reponse": 78,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "64 ÷ 8",
+          "reponse": 8,
+          "categorie": "calcul"
+        },
+        {
+          "type": "addition",
+          "question": "149 + 73",
+          "reponse": 222,
+          "categorie": "calcul"
+        },
+        {
+          "type": "soustraction",
+          "question": "203 - 85",
+          "reponse": 118,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "14 × 6",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "14 × 6",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "14 × 6",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "14 × 6",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "14 × 6",
+          "reponse": 84,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "14 × 6",
+          "reponse": 84,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Révisions",
+      "description": "Consolidation des acquis CE2",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "15 × 4",
+          "reponse": 60,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "90 ÷ 6",
+          "reponse": 15,
+          "categorie": "calcul"
+        },
+        {
+          "type": "addition",
+          "question": "167 + 84",
+          "reponse": 251,
+          "categorie": "calcul"
+        },
+        {
+          "type": "soustraction",
+          "question": "218 - 79",
+          "reponse": 139,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "16 × 4",
+          "reponse": 64,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "16 × 4",
+          "reponse": 64,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "16 × 4",
+          "reponse": 64,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "16 × 4",
+          "reponse": 64,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "16 × 4",
+          "reponse": 64,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "16 × 4",
+          "reponse": 64,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Rapidité",
+      "description": "Automatisation des calculs",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "14 × 5",
+          "reponse": 70,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "84 ÷ 7",
+          "reponse": 12,
+          "categorie": "calcul"
+        },
+        {
+          "type": "addition",
+          "question": "158 + 96",
+          "reponse": 254,
+          "categorie": "calcul"
+        },
+        {
+          "type": "soustraction",
+          "question": "235 - 88",
+          "reponse": 147,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "15 × 5",
+          "reponse": 75,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "15 × 5",
+          "reponse": 75,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "15 × 5",
+          "reponse": 75,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "15 × 5",
+          "reponse": 75,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "15 × 5",
+          "reponse": 75,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "15 × 5",
+          "reponse": 75,
+          "categorie": "calcul"
+        }
+      ]
+    }
+  ]
+}

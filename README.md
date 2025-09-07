@@ -211,6 +211,10 @@ ecole-treilles/
 - Pas de publicité
 - Pas de collecte de données
 
+### 🔒 **Respect du RGPD**
+
+**Aucune donnée personnelle collectée :** Cette application fonctionne entièrement dans votre navigateur. Aucune information n'est transmise, stockée ou analysée sur nos serveurs. Vos réponses et progrès restent privés et locaux à votre appareil.
+
 ### 🤝 **Contribution et soutien**
 
 **💝 Vous aimez cette application ? Montrez votre soutien !**
@@ -260,6 +264,16 @@ ecole-treilles/
 - **Comportement attendu** : Que devrait-il se passer ?
 - **Environnement** : Navigateur, OS, version
 - **Captures d'écran** : Si applicable
+---
+
+## 🤖 **Développement assisté par IA**
+
+Cette application a été développée avec l'assistance d'une intelligence artificielle pour accélérer le processus de création et assurer la qualité du code. L'IA a contribué à :
+- La structure et l'organisation du code
+- La génération des exercices mathématiques
+- L'optimisation de l'interface utilisateur
+- La documentation et les tests
+
 ---
 
 *Fait avec ❤️ pour l'éducation française*

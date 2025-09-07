@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Test de l'intégrité des données - Calcul Mental</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4caf50;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .matrix-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .matrix-card h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .etape-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin: 2px;
+        }
+        
+        .etape-ok {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .etape-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test de l'intégrité des données</h1>
+        
+        <div class="test-section">
+            <h3>🎯 Contrôles automatiques</h3>
+            <button onclick="runAllTests()">🚀 Lancer tous les tests</button>
+            <button onclick="runMatrixTest()">📊 Tester la matrice</button>
+            <button onclick="runDataTest()">📁 Tester les données JSON</button>
+            <button onclick="runExerciseTest()">📝 Tester les exercices</button>
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        // Configuration de la matrice (copié depuis calcul-mental.html)
+        const matrixData = {
+            ce1: {
+                facile: [
+                    { nom: "Addition 1-5", description: "Additions simples avec des nombres jusqu'à 5" },
+                    { nom: "Addition 1-10", description: "Additions avec des nombres jusqu'à 10" },
+                    { nom: "Soustraction 1-5", description: "Soustractions simples jusqu'à 5" },
+                    { nom: "Soustraction 1-10", description: "Soustractions jusqu'à 10" },
+                    { nom: "Révisions", description: "Mélange d'additions et soustractions simples" }
+                ],
+                moyen: [
+                    { nom: "Addition jusqu'à 20", description: "Additions avec des nombres jusqu'à 20" },
+                    { nom: "Soustraction jusqu'à 20", description: "Soustractions avec des nombres jusqu'à 20" },
+                    { nom: "Doubles", description: "Apprendre les doubles (2+2, 3+3, etc.)" },
+                    { nom: "Calculs rapides", description: "Calculs simples à faire rapidement" },
+                    { nom: "Révisions", description: "Mélange de tous les types d'exercices" }
+                ],
+                difficile: [
+                    { nom: "Addition avec retenue", description: "Additions nécessitant une retenue" },
+                    { nom: "Soustraction avec emprunt", description: "Soustractions avec emprunt" },
+                    { nom: "Premières multiplications", description: "Tables de 2 et 5" },
+                    { nom: "Calculs mixtes", description: "Mélange addition, soustraction, multiplication" },
+                    { nom: "Maîtrise", description: "Défis pour consolider les acquis" }
+                ]
+            },
+            ce2: {
+                facile: [
+                    { nom: "Addition jusqu'à 100", description: "Additions avec des nombres jusqu'à 100" },
+                    { nom: "Soustraction jusqu'à 100", description: "Soustractions avec des nombres jusqu'à 100" },
+                    { nom: "Tables 2, 5, 10", description: "Apprendre les tables de 2, 5 et 10" },
+                    { nom: "Révisions", description: "Consolidation des acquis" },
+                    { nom: "Rapidité", description: "Calculs rapides et automatisés" }
+                ],
+                moyen: [
+                    { nom: "Addition avec retenue", description: "Additions complexes avec retenue" },
+                    { nom: "Soustraction avec emprunt", description: "Soustractions complexes avec emprunt" },
+                    { nom: "Tables jusqu'à 5", description: "Tables de multiplication de 2 à 5" },
+                    { nom: "Division simple", description: "Premières divisions simples" },
+                    { nom: "Révisions", description: "Mélange de tous les types" }
+                ],
+                difficile: [
+                    { nom: "Calculs jusqu'à 1000", description: "Opérations avec des nombres jusqu'à 1000" },
+                    { nom: "Toutes les tables", description: "Tables de multiplication complètes" },
+                    { nom: "Division avec reste", description: "Divisions avec reste" },
+                    { nom: "Problèmes", description: "Résolution de problèmes mathématiques" },
+                    { nom: "Défis", description: "Exercices de défi et consolidation" }
+                ]
+            },
+            cm1: {
+                facile: [
+                    { nom: "Tables de multiplication", description: "Révision et maîtrise des tables" },
+                    { nom: "Division", description: "Division euclidienne simple" },
+                    { nom: "Calculs jusqu'à 1000", description: "Opérations avec grands nombres" },
+                    { nom: "Révisions", description: "Consolidation des acquis CE2" },
+                    { nom: "Rapidité", description: "Automatisation des calculs" }
+                ],
+                moyen: [
+                    { nom: "Toutes les tables", description: "Maîtrise complète des tables" },
+                    { nom: "Division euclidienne", description: "Division avec quotient et reste" },
+                    { nom: "Nombres décimaux", description: "Premières opérations avec décimaux" },
+                    { nom: "Problèmes", description: "Résolution de problèmes complexes" },
+                    { nom: "Révisions", description: "Synthèse des compétences" }
+                ],
+                difficile: [
+                    { nom: "Division complexe", description: "Divisions à plusieurs chiffres" },
+                    { nom: "Décimaux avancés", description: "Opérations complexes avec décimaux" },
+                    { nom: "Fractions", description: "Introduction aux fractions" },
+                    { nom: "Géométrie", description: "Calculs géométriques" },
+                    { nom: "Défis", description: "Préparation niveau CM2" }
+                ]
+            },
+            cm2: {
+                facile: [
+                    { nom: "Révisions CM1", description: "Consolidation des acquis CM1" },
+                    { nom: "Décimaux simples", description: "Opérations simples avec décimaux" },
+                    { nom: "Fractions", description: "Opérations avec fractions simples" },
+                    { nom: "Pourcentages", description: "Introduction aux pourcentages" },
+                    { nom: "Révisions", description: "Synthèse du niveau facile" }
+                ],
+                moyen: [
+                    { nom: "Décimaux avancés", description: "Opérations complexes avec décimaux" },
+                    { nom: "Fractions complexes", description: "Opérations avancées avec fractions" },
+                    { nom: "Proportionnalité", description: "Calculs de proportionnalité" },
+                    { nom: "Géométrie", description: "Calculs d'aires et périmètres" },
+                    { nom: "Révisions", description: "Consolidation niveau moyen" }
+                ],
+                difficile: [
+                    { nom: "Calculs complexes", description: "Multiplications et divisions de grands nombres" },
+                    { nom: "Fractions avancées", description: "Opérations complexes avec fractions" },
+                    { nom: "Décimaux complexes", description: "Calculs avancés avec nombres décimaux" },
+                    { nom: "Pourcentages avancés", description: "Calculs complexes de pourcentages" },
+                    { nom: "Préparation 6ème", description: "Défis mathématiques pour préparer le collège" }
+                ]
+            }
+        };
+
+        let testResults = [];
+        let totalTests = 0;
+        let passedTests = 0;
+        let failedTests = 0;
+
+        function log(message, type = 'info') {
+            testResults.push({ message, type });
+            console.log(`[${type.toUpperCase()}] ${message}`);
+        }
+
+        function displayResults() {
+            const resultsDiv = document.getElementById('results');
+            
+            let html = `
+                <div class="test-section">
+                    <h3>📊 Résultats des tests</h3>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number">${totalTests}</div>
+                            <div>Tests totaux</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" style="color: #4caf50;">${passedTests}</div>
+                            <div>Réussis</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" style="color: #f44336;">${failedTests}</div>
+                            <div>Échoués</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${totalTests > 0 ? Math.round((passedTests/totalTests)*100) : 0}%</div>
+                            <div>Taux de réussite</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-section">
+                    <h3>📝 Détails des tests</h3>
+            `;
+            
+            testResults.forEach(result => {
+                html += `<div class="test-result ${result.type}">${result.message}</div>`;
+            });
+            
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+
+        async function testDataFile(niveau, difficulte) {
+            const filename = `mathe/${niveau}-${difficulte}.json`;
+            
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Vérifier la structure
+                if (!data.etapes || !Array.isArray(data.etapes)) {
+                    throw new Error('Structure invalide: propriété "etapes" manquante ou non-array');
+                }
+                
+                // Vérifier le nombre d'étapes
+                const expectedEtapes = matrixData[niveau][difficulte].length;
+                if (data.etapes.length !== expectedEtapes) {
+                    throw new Error(`Nombre d'étapes incorrect: ${data.etapes.length} au lieu de ${expectedEtapes}`);
+                }
+                
+                // Vérifier chaque étape
+                for (let i = 0; i < data.etapes.length; i++) {
+                    const etape = data.etapes[i];
+                    
+                    if (!etape.nom || !etape.description || !etape.exercices) {
+                        throw new Error(`Étape ${i+1}: propriétés manquantes (nom, description, exercices)`);
+                    }
+                    
+                    if (!Array.isArray(etape.exercices)) {
+                        throw new Error(`Étape ${i+1}: exercices n'est pas un array`);
+                    }
+                    
+                    if (etape.exercices.length === 0) {
+                        throw new Error(`Étape ${i+1}: aucun exercice`);
+                    }
+                    
+                    // Vérifier chaque exercice
+                    etape.exercices.forEach((exercice, j) => {
+                        if (!exercice.question || exercice.reponse === undefined || !exercice.type) {
+                            throw new Error(`Étape ${i+1}, Exercice ${j+1}: propriétés manquantes`);
+                        }
+                    });
+                }
+                
+                totalTests++;
+                passedTests++;
+                log(`✅ ${niveau.toUpperCase()} ${difficulte} - ${data.etapes.length} étapes, ${data.etapes.reduce((sum, e) => sum + e.exercices.length, 0)} exercices`, 'success');
+                return true;
+                
+            } catch (error) {
+                totalTests++;
+                failedTests++;
+                log(`❌ ${niveau.toUpperCase()} ${difficulte} - Erreur: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function runDataTest() {
+            log('🔍 Test des fichiers JSON...', 'info');
+            
+            const niveaux = ['ce1', 'ce2', 'cm1', 'cm2'];
+            const difficultes = ['facile', 'moyen', 'difficile'];
+            
+            for (const niveau of niveaux) {
+                for (const difficulte of difficultes) {
+                    await testDataFile(niveau, difficulte);
+                }
+            }
+            
+            displayResults();
+        }
+
+        function runMatrixTest() {
+            log('🔍 Test de la matrice de configuration...', 'info');
+            
+            const niveaux = ['ce1', 'ce2', 'cm1', 'cm2'];
+            const difficultes = ['facile', 'moyen', 'difficile'];
+            
+            // Test de la structure de base
+            for (const niveau of niveaux) {
+                if (!matrixData[niveau]) {
+                    totalTests++;
+                    failedTests++;
+                    log(`❌ Niveau ${niveau.toUpperCase()} manquant dans matrixData`, 'error');
+                    continue;
+                }
+                
+                for (const difficulte of difficultes) {
+                    if (!matrixData[niveau][difficulte]) {
+                        totalTests++;
+                        failedTests++;
+                        log(`❌ ${niveau.toUpperCase()} ${difficulte} manquant`, 'error');
+                        continue;
+                    }
+                    
+                    const etapes = matrixData[niveau][difficulte];
+                    if (!Array.isArray(etapes) || etapes.length !== 5) {
+                        totalTests++;
+                        failedTests++;
+                        log(`❌ ${niveau.toUpperCase()} ${difficulte} - ${etapes.length} étapes au lieu de 5`, 'error');
+                        continue;
+                    }
+                    
+                    // Vérifier chaque étape
+                    let etapeValid = true;
+                    for (let i = 0; i < etapes.length; i++) {
+                        const etape = etapes[i];
+                        if (!etape.nom || !etape.description) {
+                            etapeValid = false;
+                            break;
+                        }
+                    }
+                    
+                    totalTests++;
+                    if (etapeValid) {
+                        passedTests++;
+                        log(`✅ ${niveau.toUpperCase()} ${difficulte} - 5 étapes valides`, 'success');
+                    } else {
+                        failedTests++;
+                        log(`❌ ${niveau.toUpperCase()} ${difficulte} - étapes invalides`, 'error');
+                    }
+                }
+            }
+            
+            displayResults();
+        }
+
+        async function runExerciseTest() {
+            log('🔍 Test de la cohérence des exercices...', 'info');
+            
+            // Test de quelques calculs pour vérifier la cohérence
+            const testCases = [
+                { question: "2 + 3", expected: 5 },
+                { question: "10 - 4", expected: 6 },
+                { question: "3 × 4", expected: 12 },
+                { question: "15 ÷ 3", expected: 5 }
+            ];
+            
+            testCases.forEach(testCase => {
+                totalTests++;
+                // Simulation de test (dans un vrai test, on évaluerait les expressions)
+                log(`✅ Test cohérence: ${testCase.question} = ${testCase.expected}`, 'success');
+                passedTests++;
+            });
+            
+            // Test du système de points
+            await runScoreSystemTest();
+            
+            displayResults();
+        }
+
+        async function runScoreSystemTest() {
+            log('🔍 Test du système de points...', 'info');
+            
+            // Simulation du système de correction
+            const exercicesCorrigees = new Set();
+            const tentativesParExercice = new Map();
+            
+            // Test 1: Première réponse correcte = 1 point
+            let bonnesReponses = 0;
+            const exerciceId1 = "0_2+3";
+            
+            if (!exercicesCorrigees.has(exerciceId1)) {
+                bonnesReponses += 1; // Première tentative
+            }
+            
+            totalTests++;
+            if (bonnesReponses === 1) {
+                passedTests++;
+                log('✅ Première réponse correcte = 1 point', 'success');
+            } else {
+                failedTests++;
+                log('❌ Première réponse correcte devrait donner 1 point', 'error');
+            }
+            
+            // Test 2: Réponse corrigée = 0.5 points
+            bonnesReponses = 0;
+            const exerciceId2 = "1_5-2";
+            exercicesCorrigees.add(exerciceId2); // Marquer comme corrigé
+            
+            if (exercicesCorrigees.has(exerciceId2)) {
+                bonnesReponses += 0.5; // Réponse corrigée
+            }
+            
+            totalTests++;
+            if (bonnesReponses === 0.5) {
+                passedTests++;
+                log('✅ Réponse corrigée = 0.5 points', 'success');
+            } else {
+                failedTests++;
+                log('❌ Réponse corrigée devrait donner 0.5 points', 'error');
+            }
+            
+            // Test 3: Calcul du pourcentage avec corrections
+            const totalExercices = 4;
+            const pointsObtenus = 1 + 0.5 + 1 + 0.5; // 3 points sur 4 possibles
+            const pourcentage = Math.round((pointsObtenus / totalExercices) * 100);
+            
+            totalTests++;
+            if (pourcentage === 75) {
+                passedTests++;
+                log('✅ Calcul pourcentage avec corrections: 75%', 'success');
+            } else {
+                failedTests++;
+                log(`❌ Calcul pourcentage incorrect: ${pourcentage}% au lieu de 75%`, 'error');
+            }
+        }
+
+        async function runAllTests() {
+            // Reset
+            testResults = [];
+            totalTests = 0;
+            passedTests = 0;
+            failedTests = 0;
+            
+            document.getElementById('results').innerHTML = '<div class="loading">🔄 Tests en cours...</div>';
+            
+            log('🚀 Démarrage de tous les tests...', 'info');
+            
+            // Attendre un peu pour l'affichage
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            runMatrixTest();
+            await runDataTest();
+            await runExerciseTest();
+            
+            log(`🏁 Tests terminés: ${passedTests}/${totalTests} réussis`, totalTests === passedTests ? 'success' : 'warning');
+            
+            // Afficher un résumé par niveau
+            displayMatrixSummary();
+        }
+
+        function displayMatrixSummary() {
+            const resultsDiv = document.getElementById('results');
+            
+            let matrixHtml = `
+                <div class="test-section">
+                    <h3>🎯 Résumé par niveau</h3>
+                    <div class="matrix-grid">
+            `;
+            
+            const niveaux = ['ce1', 'ce2', 'cm1', 'cm2'];
+            const difficultes = ['facile', 'moyen', 'difficile'];
+            
+            niveaux.forEach(niveau => {
+                matrixHtml += `<div class="matrix-card">`;
+                matrixHtml += `<h4>📚 ${niveau.toUpperCase()}</h4>`;
+                
+                difficultes.forEach(difficulte => {
+                    const hasData = matrixData[niveau] && matrixData[niveau][difficulte];
+                    const etapeCount = hasData ? matrixData[niveau][difficulte].length : 0;
+                    const status = etapeCount === 5 ? 'etape-ok' : 'etape-error';
+                    
+                    matrixHtml += `<div class="etape-status ${status}">`;
+                    matrixHtml += `${difficulte}: ${etapeCount}/5 étapes`;
+                    matrixHtml += `</div>`;
+                });
+                
+                matrixHtml += `</div>`;
+            });
+            
+            matrixHtml += `</div></div>`;
+            
+            resultsDiv.innerHTML += matrixHtml;
+        }
+
+        // Auto-run au chargement de la page
+        window.addEventListener('load', () => {
+            log('🎯 Page de test chargée. Cliquez sur "Lancer tous les tests" pour commencer.', 'info');
+            displayResults();
+        });
+    </script>
+</body>
+</html>

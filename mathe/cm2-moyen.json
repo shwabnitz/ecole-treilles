@@ -1,22 +1,334 @@
-[
-    {"type": "multiplication", "question": "126 × 34", "reponse": 4284, "categorie": "calcul"},
-    {"type": "division", "question": "1248 ÷ 24", "reponse": 52, "categorie": "calcul"},
-    {"type": "fraction", "question": "3/4 + 2/3", "reponse": 1.417, "categorie": "fraction"},
-    {"type": "decimal", "question": "124.56 + 89.47", "reponse": 214.03, "categorie": "decimal"},
-    {"type": "pourcentage", "question": "25% de 80", "reponse": 20, "categorie": "pourcentage"},
-    {"type": "multiplication", "question": "89 × 47", "reponse": 4183, "categorie": "calcul"},
-    {"type": "division", "question": "1536 ÷ 32", "reponse": 48, "categorie": "calcul"},
-    {"type": "decimal", "question": "156.78 - 89.94", "reponse": 66.84, "categorie": "decimal"},
-    {"type": "pourcentage", "question": "15% de 120", "reponse": 18, "categorie": "pourcentage"},
-    {"type": "multiplication", "question": "76 × 58", "reponse": 4408, "categorie": "calcul"},
-    {"type": "division", "question": "1824 ÷ 38", "reponse": 48, "categorie": "calcul"},
-    {"type": "decimal", "question": "234.67 + 78.89", "reponse": 313.56, "categorie": "decimal"},
-    {"type": "pourcentage", "question": "30% de 150", "reponse": 45, "categorie": "pourcentage"},
-    {"type": "multiplication", "question": "64 × 73", "reponse": 4672, "categorie": "calcul"},
-    {"type": "division", "question": "2016 ÷ 42", "reponse": 48, "categorie": "calcul"},
-    {"type": "decimal", "question": "189.45 - 96.78", "reponse": 92.67, "categorie": "decimal"},
-    {"type": "pourcentage", "question": "20% de 85", "reponse": 17, "categorie": "pourcentage"},
-    {"type": "multiplication", "question": "93 × 56", "reponse": 5208, "categorie": "calcul"},
-    {"type": "division", "question": "2304 ÷ 48", "reponse": 48, "categorie": "calcul"},
-    {"type": "decimal", "question": "267.89 + 134.56", "reponse": 402.45, "categorie": "decimal"}
-]
+{
+  "etapes": [
+    {
+      "nom": "Décimaux avancés",
+      "description": "Opérations complexes avec décimaux",
+      "exercices": [
+        {
+          "type": "multiplication",
+          "question": "126 × 34",
+          "reponse": 4284,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "1248 ÷ 24",
+          "reponse": 52,
+          "categorie": "calcul"
+        },
+        {
+          "type": "fraction",
+          "question": "3/4 + 2/3",
+          "reponse": 1.417,
+          "categorie": "fraction"
+        },
+        {
+          "type": "decimal",
+          "question": "124.56 + 89.47",
+          "reponse": 214.03,
+          "categorie": "decimal"
+        },
+        {
+          "type": "multiplication",
+          "question": "127 × 34",
+          "reponse": 4318,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "127 × 34",
+          "reponse": 4318,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "127 × 34",
+          "reponse": 4318,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "127 × 34",
+          "reponse": 4318,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "127 × 34",
+          "reponse": 4318,
+          "categorie": "calcul"
+        },
+        {
+          "type": "multiplication",
+          "question": "127 × 34",
+          "reponse": 4318,
+          "categorie": "calcul"
+        }
+      ]
+    },
+    {
+      "nom": "Fractions complexes",
+      "description": "Opérations avancées avec fractions",
+      "exercices": [
+        {
+          "type": "pourcentage",
+          "question": "25% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "multiplication",
+          "question": "89 × 47",
+          "reponse": 4183,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "1536 ÷ 32",
+          "reponse": 48,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "156.78 - 89.94",
+          "reponse": 66.84,
+          "categorie": "decimal"
+        },
+        {
+          "type": "pourcentage",
+          "question": "26% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "26% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "26% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "26% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "26% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "26% de 80",
+          "reponse": 20,
+          "categorie": "pourcentage"
+        }
+      ]
+    },
+    {
+      "nom": "Proportionnalité",
+      "description": "Calculs de proportionnalité",
+      "exercices": [
+        {
+          "type": "pourcentage",
+          "question": "15% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "multiplication",
+          "question": "76 × 58",
+          "reponse": 4408,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "1824 ÷ 38",
+          "reponse": 48,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "234.67 + 78.89",
+          "reponse": 313.56,
+          "categorie": "decimal"
+        },
+        {
+          "type": "pourcentage",
+          "question": "16% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "16% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "16% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "16% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "16% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "16% de 120",
+          "reponse": 18,
+          "categorie": "pourcentage"
+        }
+      ]
+    },
+    {
+      "nom": "Géométrie",
+      "description": "Calculs d'aires et périmètres",
+      "exercices": [
+        {
+          "type": "pourcentage",
+          "question": "30% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "multiplication",
+          "question": "64 × 73",
+          "reponse": 4672,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "2016 ÷ 42",
+          "reponse": 48,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "189.45 - 96.78",
+          "reponse": 92.67,
+          "categorie": "decimal"
+        },
+        {
+          "type": "pourcentage",
+          "question": "31% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "31% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "31% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "31% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "31% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "31% de 150",
+          "reponse": 45,
+          "categorie": "pourcentage"
+        }
+      ]
+    },
+    {
+      "nom": "Révisions",
+      "description": "Consolidation niveau moyen",
+      "exercices": [
+        {
+          "type": "pourcentage",
+          "question": "20% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "multiplication",
+          "question": "93 × 56",
+          "reponse": 5208,
+          "categorie": "calcul"
+        },
+        {
+          "type": "division",
+          "question": "2304 ÷ 48",
+          "reponse": 48,
+          "categorie": "calcul"
+        },
+        {
+          "type": "decimal",
+          "question": "267.89 + 134.56",
+          "reponse": 402.45,
+          "categorie": "decimal"
+        },
+        {
+          "type": "pourcentage",
+          "question": "21% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "21% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "21% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "21% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "21% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        },
+        {
+          "type": "pourcentage",
+          "question": "21% de 85",
+          "reponse": 17,
+          "categorie": "pourcentage"
+        }
+      ]
+    }
+  ]
+}

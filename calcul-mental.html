@@ -86,28 +86,102 @@
         let audioContext = null;
         let bonnesReponses = 0;
         let totalReponses = 0;
+        let exercicesCorrigees = new Set(); // Exercices qui ont été corrigés
+        let tentativesParExercice = new Map(); // Nombre de tentatives par exercice
         
         // Matrix-Daten für jedes Niveau
         const matrixData = {
             ce1: {
-                facile: ['Addition 1-5', 'Addition 1-10', 'Soustraction 1-5', 'Soustraction 1-10', 'Mélange Addition/Soustraction'],
-                moyen: ['Addition jusqu\'à 20', 'Soustraction jusqu\'à 20', 'Doubles et moitiés', 'Calculs rapides', 'Révisions complètes'],
-                difficile: ['Addition avec retenue', 'Soustraction avec emprunt', 'Premières multiplications', 'Calculs mixtes avancés', 'Maîtrise complète']
+                facile: [
+                    { nom: "Addition 1-5", description: "Additions simples avec des nombres jusqu'à 5" },
+                    { nom: "Addition 1-10", description: "Additions avec des nombres jusqu'à 10" },
+                    { nom: "Soustraction 1-5", description: "Soustractions simples jusqu'à 5" },
+                    { nom: "Soustraction 1-10", description: "Soustractions jusqu'à 10" },
+                    { nom: "Révisions", description: "Mélange d'additions et soustractions simples" }
+                ],
+                moyen: [
+                    { nom: "Addition jusqu'à 20", description: "Additions avec des nombres jusqu'à 20" },
+                    { nom: "Soustraction jusqu'à 20", description: "Soustractions avec des nombres jusqu'à 20" },
+                    { nom: "Doubles", description: "Apprendre les doubles (2+2, 3+3, etc.)" },
+                    { nom: "Calculs rapides", description: "Calculs simples à faire rapidement" },
+                    { nom: "Révisions", description: "Mélange de tous les types d'exercices" }
+                ],
+                difficile: [
+                    { nom: "Addition avec retenue", description: "Additions nécessitant une retenue" },
+                    { nom: "Soustraction avec emprunt", description: "Soustractions avec emprunt" },
+                    { nom: "Premières multiplications", description: "Tables de 2 et 5" },
+                    { nom: "Calculs mixtes", description: "Mélange addition, soustraction, multiplication" },
+                    { nom: "Maîtrise", description: "Défis pour consolider les acquis" }
+                ]
             },
             ce2: {
-                facile: ['Addition jusqu\'à 100', 'Soustraction jusqu\'à 100', 'Tables de 2, 5, 10', 'Révisions mixtes', 'Calculs rapides'],
-                moyen: ['Addition avec retenue', 'Soustraction avec emprunt', 'Tables jusqu\'à 5', 'Division simple', 'Révisions complètes'],
-                difficile: ['Calculs jusqu\'à 1000', 'Toutes les tables', 'Division avec reste', 'Problèmes', 'Défis mathématiques']
+                facile: [
+                    { nom: "Addition jusqu'à 100", description: "Additions avec des nombres jusqu'à 100" },
+                    { nom: "Soustraction jusqu'à 100", description: "Soustractions avec des nombres jusqu'à 100" },
+                    { nom: "Tables 2, 5, 10", description: "Apprendre les tables de 2, 5 et 10" },
+                    { nom: "Révisions", description: "Consolidation des acquis" },
+                    { nom: "Rapidité", description: "Calculs rapides et automatisés" }
+                ],
+                moyen: [
+                    { nom: "Addition avec retenue", description: "Additions complexes avec retenue" },
+                    { nom: "Soustraction avec emprunt", description: "Soustractions complexes avec emprunt" },
+                    { nom: "Tables jusqu'à 5", description: "Tables de multiplication de 2 à 5" },
+                    { nom: "Division simple", description: "Premières divisions simples" },
+                    { nom: "Révisions", description: "Mélange de tous les types" }
+                ],
+                difficile: [
+                    { nom: "Calculs jusqu'à 1000", description: "Opérations avec des nombres jusqu'à 1000" },
+                    { nom: "Toutes les tables", description: "Tables de multiplication complètes" },
+                    { nom: "Division avec reste", description: "Divisions avec reste" },
+                    { nom: "Problèmes", description: "Résolution de problèmes mathématiques" },
+                    { nom: "Défis", description: "Exercices de défi et consolidation" }
+                ]
             },
             cm1: {
-                facile: ['Tables de multiplication', 'Division simple', 'Calculs jusqu\'à 1000', 'Révisions CE2', 'Préparation CM1'],
-                moyen: ['Toutes les tables', 'Division euclidienne', 'Nombres décimaux', 'Fractions simples', 'Calculs mixtes'],
-                difficile: ['Division complexe', 'Décimaux avancés', 'Fractions', 'Problèmes complexes', 'Défis CM1']
+                facile: [
+                    { nom: "Tables de multiplication", description: "Révision et maîtrise des tables" },
+                    { nom: "Division", description: "Division euclidienne simple" },
+                    { nom: "Calculs jusqu'à 1000", description: "Opérations avec grands nombres" },
+                    { nom: "Révisions", description: "Consolidation des acquis CE2" },
+                    { nom: "Rapidité", description: "Automatisation des calculs" }
+                ],
+                moyen: [
+                    { nom: "Toutes les tables", description: "Maîtrise complète des tables" },
+                    { nom: "Division euclidienne", description: "Division avec quotient et reste" },
+                    { nom: "Nombres décimaux", description: "Premières opérations avec décimaux" },
+                    { nom: "Problèmes", description: "Résolution de problèmes complexes" },
+                    { nom: "Révisions", description: "Synthèse des compétences" }
+                ],
+                difficile: [
+                    { nom: "Division complexe", description: "Divisions à plusieurs chiffres" },
+                    { nom: "Décimaux avancés", description: "Opérations complexes avec décimaux" },
+                    { nom: "Fractions", description: "Introduction aux fractions" },
+                    { nom: "Géométrie", description: "Calculs géométriques" },
+                    { nom: "Défis", description: "Préparation niveau CM2" }
+                ]
             },
             cm2: {
-                facile: ['Révisions CM1', 'Décimaux simples', 'Fractions', 'Pourcentages', 'Mesures simples'],
-                moyen: ['Décimaux avancés', 'Fractions complexes', 'Proportionnalité', 'Géométrie', 'Statistiques'],
-                difficile: ['Calculs complexes', 'Problèmes avancés', 'Mesures', 'Statistiques', 'Préparation 6ème']
+                facile: [
+                    { nom: "Révisions CM1", description: "Consolidation des acquis CM1" },
+                    { nom: "Décimaux simples", description: "Opérations simples avec décimaux" },
+                    { nom: "Fractions", description: "Opérations avec fractions simples" },
+                    { nom: "Pourcentages", description: "Introduction aux pourcentages" },
+                    { nom: "Révisions", description: "Synthèse du niveau facile" }
+                ],
+                moyen: [
+                    { nom: "Décimaux avancés", description: "Opérations complexes avec décimaux" },
+                    { nom: "Fractions complexes", description: "Opérations avancées avec fractions" },
+                    { nom: "Proportionnalité", description: "Calculs de proportionnalité" },
+                    { nom: "Géométrie", description: "Calculs d'aires et périmètres" },
+                    { nom: "Révisions", description: "Consolidation niveau moyen" }
+                ],
+                difficile: [
+                    { nom: "Calculs complexes", description: "Multiplications et divisions de grands nombres" },
+                    { nom: "Fractions avancées", description: "Opérations complexes avec fractions" },
+                    { nom: "Décimaux complexes", description: "Calculs avancés avec nombres décimaux" },
+                    { nom: "Pourcentages avancés", description: "Calculs complexes de pourcentages" },
+                    { nom: "Préparation 6ème", description: "Défis mathématiques pour préparer le collège" }
+                ]
             }
         };
 
@@ -147,8 +221,8 @@
                 ['facile', 'moyen', 'difficile'].forEach(difficulte => {
                     const etape = data[difficulte][i];
                     if (etape) {
-                        html += `<div class="matrix-cell etape-btn" onclick="demarrerEtape('${niveau}', '${difficulte}', ${i})">
-                                    <div class="etape-nom">${etape}</div>
+                        html += `<div class="matrix-cell etape-btn" onclick="demarrerEtape('${niveau}', '${difficulte}', ${i})" title="${etape.description}">
+                                    <div class="etape-nom">${etape.nom}</div>
                                  </div>`;
                     } else {
                         html += '<div class="matrix-cell etape-empty"></div>';
@@ -219,6 +293,12 @@
             niveauActuel = niveau;
             difficulteActuelle = difficulte;
             etapeActuelle = etapeIndex;
+            
+            // Statistiken zurücksetzen für neue Étape
+            bonnesReponses = 0;
+            totalReponses = 0;
+            exercicesCorrigees.clear();
+            tentativesParExercice.clear();
             
             // Wechsle zur Diaporama-Seite
             document.getElementById('selectionPage').style.display = 'none';
@@ -604,36 +684,68 @@
             const tolerance = exercice.type === 'decimal' ? 0.01 : 0;
             const estCorrect = Math.abs(reponseUtilisateur - exercice.reponse) <= tolerance;
             
+            // Exercice-ID für Tracking
+            const exerciceId = `${indexExercice}_${exercice.question}`;
+            
+            // Tentatives zählen
+            const tentatives = tentativesParExercice.get(exerciceId) || 0;
+            tentativesParExercice.set(exerciceId, tentatives + 1);
+            
             // Statistiken aktualisieren
             totalReponses++;
             if (estCorrect) {
-                bonnesReponses++;
-            }
-            
-            if (estCorrect) {
-                feedback.textContent = '🎉 Bravo ! C\'est correct !';
+                // Punkte basierend auf Korrekturen
+                const estCorrigee = exercicesCorrigees.has(exerciceId);
+                if (estCorrigee) {
+                    bonnesReponses += 0.5; // Halbe Punkte für korrigierte Antworten
+                } else {
+                    bonnesReponses += 1; // Volle Punkte für erste richtige Antwort
+                }
+                
+                const message = estCorrigee ? 
+                    '🎉 Bravo ! C\'est correct ! (corrigé)' : 
+                    '🎉 Bravo ! C\'est correct !';
+                feedback.textContent = message;
                 feedback.className = 'feedback correct';
                 sonCorrect();
                 creerParticules(document.getElementById('exercice-actuel'), '#4caf50');
+                
+                // Bei richtiger Antwort: direkt weiter
+                input.disabled = true;
+                document.getElementById('btnValider').style.display = 'none';
+                document.getElementById('btnCorriger').style.display = 'none';
+                
+                // Solution-Button verstecken falls vorhanden
+                const btnSolution = document.getElementById('btnVoirSolution');
+                if (btnSolution) {
+                    btnSolution.style.display = 'none';
+                }
+                
+                if (indexExercice < exercicesActuels.length - 1) {
+                    document.getElementById('btnContinuer').style.display = 'inline-block';
+                } else {
+                    document.getElementById('btnContinuer').style.display = 'none';
+                    setTimeout(() => {
+                        afficherBewertungsButton();
+                    }, 1000);
+                }
             } else {
-                feedback.textContent = `❌ Pas tout à fait... La réponse est ${exercice.reponse}`;
+                // Falsche Antwort - NUR Corriger-Button, KEINE Lösung
+                feedback.textContent = '❌ Pas tout à fait... Essaie encore !';
                 feedback.className = 'feedback incorrect';
                 sonIncorrect();
-            }
-            
-            input.disabled = true;
-            document.getElementById('btnValider').style.display = 'none';
-            document.getElementById('btnCorriger').style.display = 'inline-block';
-            
-            // Nur "Continuer" zeigen wenn es NICHT die letzte Aufgabe ist
-            if (indexExercice < exercicesActuels.length - 1) {
-                document.getElementById('btnContinuer').style.display = 'inline-block';
-            } else {
+                
+                input.disabled = true;
+                document.getElementById('btnValider').style.display = 'none';
+                document.getElementById('btnCorriger').style.display = 'inline-block';
                 document.getElementById('btnContinuer').style.display = 'none';
-                // Bei letzter Aufgabe: Bewertungs-Button anzeigen
-                setTimeout(() => {
-                    afficherBewertungsButton();
-                }, 500);
+                
+                // "Voir la solution" Button hinzufügen
+                let btnSolution = document.getElementById('btnVoirSolution');
+                if (!btnSolution) {
+                    btnSolution = createSolutionButton();
+                }
+                btnSolution.style.display = 'inline-block';
             }
             
             reponseValidee = true;
@@ -641,15 +753,66 @@
 
         // Fonction de correction
         function corrigerReponse() {
+            const exercice = exercicesActuels[indexExercice];
+            const exerciceId = `${indexExercice}_${exercice.question}`;
+            
+            // Markieren als korrigiert
+            exercicesCorrigees.add(exerciceId);
+            
             document.getElementById('inputReponse').disabled = false;
             document.getElementById('inputReponse').focus();
             document.getElementById('inputReponse').select();
-            document.getElementById('feedback').textContent = '';
-            document.getElementById('feedback').className = 'feedback';
+            document.getElementById('feedback').textContent = 'Essaie encore ! (correction en cours)';
+            document.getElementById('feedback').className = 'feedback warning';
             document.getElementById('btnValider').style.display = 'inline-block';
             document.getElementById('btnCorriger').style.display = 'none';
             document.getElementById('btnContinuer').style.display = 'none';
+            
+            // Solution-Button verstecken
+            const btnSolution = document.getElementById('btnVoirSolution');
+            if (btnSolution) {
+                btnSolution.style.display = 'none';
+            }
+            
             reponseValidee = false;
+        }
+        
+        // Neue Funktion: Solution-Button erstellen
+        function createSolutionButton() {
+            const btn = document.createElement('button');
+            btn.id = 'btnVoirSolution';
+            btn.className = 'btn-voir-solution';
+            btn.textContent = '👁️ Voir la solution';
+            btn.onclick = voirSolution;
+            
+            // Button nach btnCorriger einfügen
+            const btnCorriger = document.getElementById('btnCorriger');
+            btnCorriger.parentNode.insertBefore(btn, btnCorriger.nextSibling);
+            
+            return btn;
+        }
+        
+        // Neue Funktion: Lösung anzeigen
+        function voirSolution() {
+            const exercice = exercicesActuels[indexExercice];
+            const feedback = document.getElementById('feedback');
+            
+            feedback.textContent = `💡 La solution est : ${exercice.reponse}`;
+            feedback.className = 'feedback solution';
+            
+            // Alle Buttons außer "Continuer" verstecken
+            document.getElementById('btnValider').style.display = 'none';
+            document.getElementById('btnCorriger').style.display = 'none';
+            document.getElementById('btnVoirSolution').style.display = 'none';
+            
+            // Continuer-Button anzeigen
+            if (indexExercice < exercicesActuels.length - 1) {
+                document.getElementById('btnContinuer').style.display = 'inline-block';
+            } else {
+                setTimeout(() => {
+                    afficherBewertungsButton();
+                }, 1000);
+            }
         }
         
         // Neue Funktion zum Fortfahren
@@ -707,8 +870,16 @@
         
         // Bewertung basierend auf Leistung
         function afficherBewertung() {
-            const etapeName = matrixData[niveauActuel][difficulteActuelle][etapeActuelle];
-            const pourcentage = Math.round((bonnesReponses / totalReponses) * 100);
+            const etapeName = matrixData[niveauActuel][difficulteActuelle][etapeActuelle].nom;
+            
+            // Neues Punktesystem: bonnesReponses kann Dezimalwerte haben
+            const nombreExercices = exercicesActuels.length; // Anzahl Übungen (immer 10)
+            const maxPoints = nombreExercices; // Maximale Punkte = Anzahl Übungen
+            const pourcentage = Math.round((bonnesReponses / maxPoints) * 100);
+            
+            // Zusätzliche Statistiken
+            const nombreCorrections = exercicesCorrigees.size;
+            const premieresReussites = totalReponses - nombreCorrections;
             
             let emoji, couleur, message, motivation;
             
@@ -739,14 +910,25 @@
                 motivation = "Ne te décourage pas ! Chaque erreur est une occasion d'apprendre !";
             }
             
+            // Berechne die Anzahl der Übungen (nicht Versuche)
+            // nombreExercices bereits oben definiert
+            
             document.getElementById('questionExercice').innerHTML = `
                 <div style="text-align: center; color: ${couleur}; font-size: 1.5rem;">
                     ${emoji} ${message} ${emoji}<br>
                     <div style="font-size: 2rem; margin: 15px 0; color: ${couleur};">
-                        ${bonnesReponses}/${totalReponses} (${pourcentage}%)
+                        ${bonnesReponses.toFixed(1)}/${nombreExercices} exercices (${pourcentage}%)
                     </div>
                     <div style="font-size: 1.1rem; color: #333; margin: 15px 0; line-height: 1.4;">
                         ${motivation}
+                    </div>
+                    <div style="font-size: 0.9rem; color: #666; margin: 15px 0; background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                        📊 <strong>Détails :</strong><br>
+                        📝 Exercices total : ${nombreExercices}<br>
+                        🎯 Tentatives total : ${totalReponses}<br>
+                        ✅ Réussites du premier coup : ${premieresReussites}<br>
+                        🔄 Réussites après correction : ${nombreCorrections}<br>
+                        ${nombreCorrections > 0 ? '💡 Les corrections donnent 0.5 points chacune' : '🏆 Aucune correction nécessaire !'}
                     </div>
                     <div style="font-size: 1rem; color: #666; margin: 10px 0;">
                         Étape terminée : <strong>"${etapeName}"</strong>
