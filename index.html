@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 Calcul Mental - Application Interactive</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76,175,80,0.4);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #2196f3, #64b5f6);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(33,150,243,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33,150,243,0.4);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #4caf50;
+        }
+        
+        .feature p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .levels {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .levels h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4caf50;
+            font-size: 2rem;
+        }
+        
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .level-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .level-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .level-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #333;
+            color: white;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+        
+        .footer a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .btn-primary {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+            
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧮 Calcul Mental</h1>
+            <p>Application interactive pour l'entraînement mathématique CE1-CM2</p>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="calcul-mental.html" class="btn-primary">🎮 Jouer Maintenant</a>
+            <a href="#documentation" class="btn-secondary">📚 Documentation Complète</a>
+            <a href="https://github.com/shwabnitz/ecole-treilles" class="btn-secondary">💻 Code Source GitHub</a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🎯 Pédagogiquement Structuré</h3>
+                <p>Progression par étapes suivant le programme officiel français du CE1 au CM2</p>
+            </div>
+            
+            <div class="feature">
+                <h3>🎮 Ludique et Motivant</h3>
+                <p>Sons interactifs, animations et système de récompenses pour encourager l'apprentissage</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📊 Suivi des Progrès</h3>
+                <p>Évaluation personnalisée avec feedback positif et barre de progression visuelle</p>
+            </div>
+            
+            <div class="feature">
+                <h3>💻 Accessible Partout</h3>
+                <p>Fonctionne sur ordinateur, tablette et smartphone sans installation</p>
+            </div>
+        </div>
+        
+        <div class="levels">
+            <h2>🎓 Niveaux Disponibles</h2>
+            <div class="level-grid">
+                <div class="level-card">
+                    <h3>📚 CE1</h3>
+                    <p>Addition et soustraction jusqu'à 20<br>Premières multiplications</p>
+                </div>
+                
+                <div class="level-card">
+                    <h3>📖 CE2</h3>
+                    <p>Calculs jusqu'à 100<br>Tables de multiplication</p>
+                </div>
+                
+                <div class="level-card">
+                    <h3>📗 CM1</h3>
+                    <p>Toutes les tables<br>Division et décimaux</p>
+                </div>
+                
+                <div class="level-card">
+                    <h3>📘 CM2</h3>
+                    <p>Calculs complexes<br>Fractions et problèmes</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 40px 0;">
+            <h2>🌟 Fonctionnalités Principales</h2>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 2;">
+                <li>✅ <strong>Système matriciel</strong> : 5 étapes par niveau de difficulté</li>
+                <li>✅ <strong>Navigation intuitive</strong> : Pas de confusion entre les boutons</li>
+                <li>✅ <strong>Audio interactif</strong> : Sons de réussite et d'erreur</li>
+                <li>✅ <strong>Évaluation motivante</strong> : Messages personnalisés selon les résultats</li>
+                <li>✅ <strong>Progression visuelle</strong> : Barre de progression en temps réel</li>
+                <li>✅ <strong>Libre et gratuit</strong> : Aucune restriction d'usage</li>
+            </ul>
+        </div>
+        
+        <div class="cta-buttons">
+            <a href="calcul-mental.html" class="btn-primary">🚀 Commencer l'Aventure Mathématique</a>
+        </div>
+        
+        <!-- Documentation complète -->
+        <div id="documentation" style="margin-top: 60px;">
+            <h2 style="text-align: center; color: #4caf50; font-size: 2.5rem; margin-bottom: 40px;">📚 Documentation Complète</h2>
+            
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 style="color: #4caf50; font-size: 1.8rem; margin-bottom: 20px;">🎮 Comment utiliser l'application</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 15px;">1️⃣ Choix du niveau</h4>
+                        <p>Sélectionnez d'abord le niveau scolaire : CE1, CE2, CM1 ou CM2</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 15px;">2️⃣ Sélection dans la matrice</h4>
+                        <p>Choisissez la difficulté (Facile, Moyen, Difficile) et l'étape (1 à 5)</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 15px;">3️⃣ Entraînement</h4>
+                        <p>Répondez aux questions, écoutez les sons de feedback et suivez votre progression</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 15px;">4️⃣ Évaluation</h4>
+                        <p>Recevez une évaluation motivante basée sur vos résultats</p>
+                    </div>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #4caf50;">
+                    <h4 style="color: #4caf50; margin-bottom: 15px;">🎯 Contrôles clavier</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><strong>Entrée :</strong> Valider la réponse puis continuer</li>
+                        <li style="margin-bottom: 8px;"><strong>Flèche gauche :</strong> Exercice précédent</li>
+                        <li style="margin-bottom: 8px;"><strong>Échap :</strong> Retour à la sélection</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 style="color: #4caf50; font-size: 1.8rem; margin-bottom: 20px;">🎓 Progression pédagogique détaillée</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 15px;">📚 CE1 (6-7 ans)</h4>
+                        <p><strong>Facile :</strong> Addition 1-5 → 1-10 → Soustraction 1-5 → 1-10 → Mélange</p>
+                        <p><strong>Moyen :</strong> Addition jusqu'à 20 → Soustraction jusqu'à 20 → Doubles → Calculs rapides</p>
+                        <p><strong>Difficile :</strong> Addition avec retenue → Soustraction avec emprunt → Premières multiplications</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 15px;">📖 CE2 (7-8 ans)</h4>
+                        <p><strong>Facile :</strong> Addition/Soustraction jusqu'à 100 → Tables 2,5,10 → Révisions</p>
+                        <p><strong>Moyen :</strong> Addition avec retenue → Tables jusqu'à 5 → Division simple</p>
+                        <p><strong>Difficile :</strong> Calculs jusqu'à 1000 → Toutes les tables → Division avec reste</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 15px;">📗 CM1 (8-9 ans)</h4>
+                        <p><strong>Facile :</strong> Tables de multiplication → Division → Calculs jusqu'à 1000</p>
+                        <p><strong>Moyen :</strong> Toutes les tables → Division euclidienne → Nombres décimaux</p>
+                        <p><strong>Difficile :</strong> Division complexe → Décimaux avancés → Fractions</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 15px;">📘 CM2 (9-10 ans)</h4>
+                        <p><strong>Facile :</strong> Révisions CM1 → Décimaux simples → Fractions → Pourcentages</p>
+                        <p><strong>Moyen :</strong> Décimaux avancés → Fractions complexes → Proportionnalité</p>
+                        <p><strong>Difficile :</strong> Calculs complexes → Problèmes avancés → Préparation 6ème</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 style="color: #4caf50; font-size: 1.8rem; margin-bottom: 20px;">🛠️ Installation et utilisation</h3>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4 style="color: #333; margin-bottom: 15px;">💻 Utilisation en ligne</h4>
+                    <p>Aucune installation requise ! Cliquez simplement sur "Jouer Maintenant" ci-dessus.</p>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4 style="color: #333; margin-bottom: 15px;">🏫 Utilisation en classe</h4>
+                    <ul>
+                        <li>Projection pour exercices collectifs</li>
+                        <li>Tablettes individuelles pour travail personnalisé</li>
+                        <li>Suivi des progrès avec statistiques</li>
+                        <li>Différenciation par niveaux et étapes</li>
+                    </ul>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px;">
+                    <h4 style="color: #333; margin-bottom: 15px;">🏠 Utilisation à la maison</h4>
+                    <ul>
+                        <li>Révisions complémentaires aux devoirs</li>
+                        <li>Maintien des acquis pendant les vacances</li>
+                        <li>Autonomie complète de l'enfant</li>
+                        <li>Motivation par le système de récompenses</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: #e8f5e8; padding: 40px; border-radius: 15px; margin-bottom: 30px; border: 2px solid #4caf50;">
+                <h3 style="color: #2e7d32; font-size: 1.8rem; margin-bottom: 20px; text-align: center;">🆓 Entièrement libre et gratuit</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #2e7d32; margin-bottom: 10px;">✅ Vous pouvez :</h4>
+                        <ul style="color: #333;">
+                            <li>Utiliser en classe sans restriction</li>
+                            <li>Partager avec d'autres enseignants</li>
+                            <li>Adapter à vos besoins pédagogiques</li>
+                            <li>Déployer sur votre site web</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: #2e7d32; margin-bottom: 10px;">❌ Aucune restriction :</h4>
+                        <ul style="color: #333;">
+                            <li>Pas de licence à payer</li>
+                            <li>Pas de compte à créer</li>
+                            <li>Pas de publicité</li>
+                            <li>Pas de collecte de données</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 15px;">
+                <h3 style="color: #4caf50; font-size: 1.8rem; margin-bottom: 20px;">💝 Soutenir le projet</h3>
+                
+                <p style="font-size: 1.1rem; margin-bottom: 20px; text-align: center;">Vous aimez cette application ? Montrez votre soutien !</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 10px;">⭐ Donnez une étoile</h4>
+                        <p>Sur GitHub (bouton "Star")</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 10px;">🔄 Partagez</h4>
+                        <p>Avec vos collègues enseignants</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 10px;">💬 Témoignez</h4>
+                        <p>Partagez votre expérience</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: #333; margin-bottom: 10px;">🛠️ Contribuez</h4>
+                        <p>Proposez des améliorations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🆓 <strong>Entièrement libre et gratuit</strong></p>
+            <p>Utilisable en classe, à la maison, sans restriction</p>
+            <p>Code source disponible sur <a href="https://github.com/shwabnitz/ecole-treilles">GitHub</a></p>
+            <p style="margin-top: 20px; opacity: 0.8;">Fait avec ❤️ pour l'éducation française</p>
+        </div>
+    </div>
+</body>
+</html>
