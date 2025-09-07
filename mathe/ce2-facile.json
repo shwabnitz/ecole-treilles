@@ -1,0 +1,84 @@
+{
+  "etapes": [
+    {
+      "nom": "Addition jusqu'à 100",
+      "description": "Additions sans retenue",
+      "exercices": [
+        {"type": "addition", "question": "23 + 15", "reponse": 38, "categorie": "calcul"},
+        {"type": "addition", "question": "34 + 12", "reponse": 46, "categorie": "calcul"},
+        {"type": "addition", "question": "41 + 26", "reponse": 67, "categorie": "calcul"},
+        {"type": "addition", "question": "52 + 13", "reponse": 65, "categorie": "calcul"},
+        {"type": "addition", "question": "31 + 28", "reponse": 59, "categorie": "calcul"},
+        {"type": "addition", "question": "45 + 24", "reponse": 69, "categorie": "calcul"},
+        {"type": "addition", "question": "62 + 17", "reponse": 79, "categorie": "calcul"},
+        {"type": "addition", "question": "33 + 35", "reponse": 68, "categorie": "calcul"},
+        {"type": "addition", "question": "54 + 25", "reponse": 79, "categorie": "calcul"},
+        {"type": "addition", "question": "42 + 37", "reponse": 79, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Soustraction jusqu'à 100",
+      "description": "Soustractions sans emprunt",
+      "exercices": [
+        {"type": "soustraction", "question": "48 - 23", "reponse": 25, "categorie": "calcul"},
+        {"type": "soustraction", "question": "67 - 34", "reponse": 33, "categorie": "calcul"},
+        {"type": "soustraction", "question": "79 - 45", "reponse": 34, "categorie": "calcul"},
+        {"type": "soustraction", "question": "86 - 52", "reponse": 34, "categorie": "calcul"},
+        {"type": "soustraction", "question": "95 - 63", "reponse": 32, "categorie": "calcul"},
+        {"type": "soustraction", "question": "74 - 41", "reponse": 33, "categorie": "calcul"},
+        {"type": "soustraction", "question": "88 - 56", "reponse": 32, "categorie": "calcul"},
+        {"type": "soustraction", "question": "93 - 72", "reponse": 21, "categorie": "calcul"},
+        {"type": "soustraction", "question": "65 - 43", "reponse": 22, "categorie": "calcul"},
+        {"type": "soustraction", "question": "87 - 64", "reponse": 23, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Tables de 2, 5, 10",
+      "description": "Premières tables de multiplication",
+      "exercices": [
+        {"type": "multiplication", "question": "2 × 8", "reponse": 16, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 6", "reponse": 30, "categorie": "calcul"},
+        {"type": "multiplication", "question": "10 × 3", "reponse": 30, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 9", "reponse": 18, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 7", "reponse": 35, "categorie": "calcul"},
+        {"type": "multiplication", "question": "10 × 5", "reponse": 50, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 10", "reponse": 20, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 8", "reponse": 40, "categorie": "calcul"},
+        {"type": "multiplication", "question": "10 × 7", "reponse": 70, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 9", "reponse": 45, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Révisions mixtes",
+      "description": "Mélange des trois opérations",
+      "exercices": [
+        {"type": "addition", "question": "36 + 28", "reponse": 64, "categorie": "calcul"},
+        {"type": "soustraction", "question": "75 - 48", "reponse": 27, "categorie": "calcul"},
+        {"type": "multiplication", "question": "4 × 6", "reponse": 24, "categorie": "calcul"},
+        {"type": "addition", "question": "47 + 35", "reponse": 82, "categorie": "calcul"},
+        {"type": "soustraction", "question": "91 - 57", "reponse": 34, "categorie": "calcul"},
+        {"type": "multiplication", "question": "3 × 9", "reponse": 27, "categorie": "calcul"},
+        {"type": "addition", "question": "58 + 29", "reponse": 87, "categorie": "calcul"},
+        {"type": "soustraction", "question": "84 - 39", "reponse": 45, "categorie": "calcul"},
+        {"type": "multiplication", "question": "6 × 7", "reponse": 42, "categorie": "calcul"},
+        {"type": "addition", "question": "49 + 46", "reponse": 95, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Calculs rapides",
+      "description": "Entraînement à la vitesse",
+      "exercices": [
+        {"type": "addition", "question": "50 + 30", "reponse": 80, "categorie": "calcul"},
+        {"type": "soustraction", "question": "90 - 40", "reponse": 50, "categorie": "calcul"},
+        {"type": "multiplication", "question": "10 × 6", "reponse": 60, "categorie": "calcul"},
+        {"type": "addition", "question": "25 + 25", "reponse": 50, "categorie": "calcul"},
+        {"type": "soustraction", "question": "80 - 30", "reponse": 50, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 12", "reponse": 60, "categorie": "calcul"},
+        {"type": "addition", "question": "40 + 35", "reponse": 75, "categorie": "calcul"},
+        {"type": "soustraction", "question": "70 - 25", "reponse": 45, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 15", "reponse": 30, "categorie": "calcul"},
+        {"type": "addition", "question": "60 + 20", "reponse": 80, "categorie": "calcul"}
+      ]
+    }
+  ]
+}

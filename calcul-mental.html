@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🧮 Calcul Mental - Entraînement Interactif</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page de sélection du niveau -->
+        <div class="selection-page" id="selectionPage">
+            <h1 class="titre-principal">🧮 Calcul Mental</h1>
+            
+            <div class="niveau-selection">
+                <div class="niveau-btn active" data-niveau="ce1" onclick="selectionnerNiveau('ce1')">📚 CE1</div>
+                <div class="niveau-btn" data-niveau="ce2" onclick="selectionnerNiveau('ce2')">📖 CE2</div>
+                <div class="niveau-btn" data-niveau="cm1" onclick="selectionnerNiveau('cm1')">📗 CM1</div>
+                <div class="niveau-btn" data-niveau="cm2" onclick="selectionnerNiveau('cm2')">📘 CM2</div>
+            </div>
+
+            <div class="matrix-container" id="matrixContainer">
+                <!-- Matrix wird dynamisch geladen -->
+            </div>
+            
+        </div>
+
+        <!-- Page du diaporama -->
+        <div class="diaporama-page" id="diaporamaPage">
+            <div class="header-diaporama">
+                <div class="info-niveau" id="infoNiveau"></div>
+                <div class="controles">
+                    <button class="btn-controle btn-retour" onclick="retourSelection()">🏠 Accueil</button>
+                </div>
+            </div>
+
+            <div class="zone-exercice">
+                <div class="exercice-actuel" id="exercice-actuel">
+                    <div class="question-exercice" id="questionExercice">
+                        Chargement...
+                    </div>
+                    <div class="zone-reponse">
+                        <input type="number" class="input-reponse" id="inputReponse" placeholder="?">
+                   <div class="btns-reponse">
+                       <button class="btn-valider" id="btnValider" onclick="validerReponse()">
+                           ✅ Valider
+                       </button>
+                       <button class="btn-corriger" id="btnCorriger" onclick="corrigerReponse()" style="display: none;">
+                           ✏️ Corriger
+                       </button>
+                       <button class="btn-continuer" id="btnContinuer" onclick="continuerExercice()" style="display: none;">
+                           ➡️ Continuer
+                       </button>
+                   </div>
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    
+                    <!-- Navigation Button -->
+                    <div class="navigation-buttons">
+                        <button class="btn-controle btn-precedent" onclick="exercicePrecedent()">⬅️ Précédent</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-info">
+                <div class="progress-text" id="progressText">Exercice 1 / 20</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cache für geladene Übungsdaten
+        let baseExercices = {};
+        
+        // Globale Variablen
+        let exercicesActuels = [];
+        let indexExercice = 0;
+        let niveauActuel = '';
+        let difficulteActuelle = '';
+        let etapeActuelle = '';
+        let reponseValidee = false;
+        let audioContext = null;
+        let bonnesReponses = 0;
+        let totalReponses = 0;
+        
+        // Matrix-Daten für jedes Niveau
+        const matrixData = {
+            ce1: {
+                facile: ['Addition 1-5', 'Addition 1-10', 'Soustraction 1-5', 'Soustraction 1-10', 'Mélange Addition/Soustraction'],
+                moyen: ['Addition jusqu\'à 20', 'Soustraction jusqu\'à 20', 'Doubles et moitiés', 'Calculs rapides', 'Révisions complètes'],
+                difficile: ['Addition avec retenue', 'Soustraction avec emprunt', 'Premières multiplications', 'Calculs mixtes avancés', 'Maîtrise complète']
+            },
+            ce2: {
+                facile: ['Addition jusqu\'à 100', 'Soustraction jusqu\'à 100', 'Tables de 2, 5, 10', 'Révisions mixtes', 'Calculs rapides'],
+                moyen: ['Addition avec retenue', 'Soustraction avec emprunt', 'Tables jusqu\'à 5', 'Division simple', 'Révisions complètes'],
+                difficile: ['Calculs jusqu\'à 1000', 'Toutes les tables', 'Division avec reste', 'Problèmes', 'Défis mathématiques']
+            },
+            cm1: {
+                facile: ['Tables de multiplication', 'Division simple', 'Calculs jusqu\'à 1000', 'Révisions CE2', 'Préparation CM1'],
+                moyen: ['Toutes les tables', 'Division euclidienne', 'Nombres décimaux', 'Fractions simples', 'Calculs mixtes'],
+                difficile: ['Division complexe', 'Décimaux avancés', 'Fractions', 'Problèmes complexes', 'Défis CM1']
+            },
+            cm2: {
+                facile: ['Révisions CM1', 'Décimaux simples', 'Fractions', 'Pourcentages', 'Mesures simples'],
+                moyen: ['Décimaux avancés', 'Fractions complexes', 'Proportionnalité', 'Géométrie', 'Statistiques'],
+                difficile: ['Calculs complexes', 'Problèmes avancés', 'Mesures', 'Statistiques', 'Préparation 6ème']
+            }
+        };
+
+        // Funktion zur Niveau-Auswahl
+        function selectionnerNiveau(niveau) {
+            // Alle Buttons deaktivieren
+            document.querySelectorAll('.niveau-btn').forEach(btn => btn.classList.remove('active'));
+            // Aktuellen Button aktivieren
+            document.querySelector(`[data-niveau="${niveau}"]`).classList.add('active');
+            
+            // Matrix für das gewählte Niveau anzeigen
+            afficherMatrix(niveau);
+        }
+        
+        // Funktion zur Anzeige der Matrix
+        function afficherMatrix(niveau) {
+            const container = document.getElementById('matrixContainer');
+            const data = matrixData[niveau];
+            
+            let html = '<div class="matrix-grid">';
+            
+            // Header mit Schwierigkeitsgraden
+            html += '<div class="matrix-header">';
+            html += '<div class="matrix-cell header-empty"></div>';
+            html += '<div class="matrix-cell header-difficulte">🌱 Facile</div>';
+            html += '<div class="matrix-cell header-difficulte">🌿 Moyen</div>';
+            html += '<div class="matrix-cell header-difficulte">🌳 Difficile</div>';
+            html += '</div>';
+            
+            // Zeilen mit Étapes
+            const maxEtapes = Math.max(data.facile.length, data.moyen.length, data.difficile.length);
+            
+            for (let i = 0; i < maxEtapes; i++) {
+                html += '<div class="matrix-row">';
+                html += `<div class="matrix-cell etape-label">Étape ${i + 1}</div>`;
+                
+                ['facile', 'moyen', 'difficile'].forEach(difficulte => {
+                    const etape = data[difficulte][i];
+                    if (etape) {
+                        html += `<div class="matrix-cell etape-btn" onclick="demarrerEtape('${niveau}', '${difficulte}', ${i})">
+                                    <div class="etape-nom">${etape}</div>
+                                 </div>`;
+                    } else {
+                        html += '<div class="matrix-cell etape-empty"></div>';
+                    }
+                });
+                
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+        
+        // Funktion zum Starten einer Étape
+        function demarrerEtape(niveau, difficulte, etapeIndex) {
+            niveauActuel = niveau;
+            difficulteActuelle = difficulte;
+            etapeActuelle = etapeIndex;
+            
+            // Lade die Übungen für diese Étape
+            demarrerExercicesEtape(niveau, difficulte, etapeIndex);
+        }
+        
+        // Funktion zum Laden der JSON-Dateien (angepasst für neue Struktur)
+        async function chargerExercices(niveau, difficulte) {
+            const cacheKey = `${niveau}-${difficulte}`;
+            
+            // Prüfen ob bereits im Cache
+            if (baseExercices[cacheKey]) {
+                return baseExercices[cacheKey];
+            }
+            
+            // Einfache relative URL - funktioniert mit lokalem Server und GitHub Pages
+            const url = `./mathe/${niveau}-${difficulte}.json`;
+            
+            try {
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // Validierung der neuen Datenstruktur (mit étapes)
+                if (!data.etapes || !Array.isArray(data.etapes) || data.etapes.length === 0) {
+                    throw new Error('Aucune étape trouvée dans le fichier');
+                }
+                
+                // Validierung der ersten Étape
+                const firstEtape = data.etapes[0];
+                if (!firstEtape.exercices || !Array.isArray(firstEtape.exercices)) {
+                    throw new Error('Structure d\'étape invalide');
+                }
+                
+                // Im Cache speichern
+                baseExercices[cacheKey] = data;
+                return data;
+                
+            } catch (error) {
+                console.error(`Erreur lors du chargement de ${url}:`, error);
+                throw error;
+            }
+        }
+
+        // Neue Funktion zum Starten einer spezifischen Étape
+        async function demarrerExercicesEtape(niveau, difficulte, etapeIndex) {
+            niveauActuel = niveau;
+            difficulteActuelle = difficulte;
+            etapeActuelle = etapeIndex;
+            
+            // Wechsle zur Diaporama-Seite
+            document.getElementById('selectionPage').style.display = 'none';
+            document.getElementById('diaporamaPage').style.display = 'flex';
+            
+            // Afficher un message de chargement
+            document.getElementById('questionExercice').textContent = 'Chargement des exercices...';
+            
+            try {
+                const data = await chargerExercices(niveau, difficulte);
+                
+                if (!data || !data.etapes || etapeIndex >= data.etapes.length) {
+                    alert('Erreur: Étape non trouvée. Veuillez réessayer.');
+                    document.getElementById('diaporamaPage').style.display = 'none';
+                    document.getElementById('selectionPage').style.display = 'flex';
+                    return;
+                }
+                
+                const etape = data.etapes[etapeIndex];
+                exercicesActuels = [...etape.exercices];
+                indexExercice = 0;
+                
+                // Statistiken zurücksetzen
+                bonnesReponses = 0;
+                totalReponses = 0;
+                
+                // Mélanger les exercices
+                for (let i = exercicesActuels.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [exercicesActuels[i], exercicesActuels[j]] = [exercicesActuels[j], exercicesActuels[i]];
+                }
+                
+                // Anzeige des Niveau-Infos mit Étape
+                document.getElementById('infoNiveau').textContent = 
+                    `${niveau.toUpperCase()} - ${difficulte.charAt(0).toUpperCase() + difficulte.slice(1)} - ${etape.nom}`;
+                
+                // Audio initialisieren und aktivieren
+                initAudio();
+                forceAudioInit();
+                afficherExercice();
+                
+            } catch (error) {
+                console.error('Erreur lors du chargement:', error);
+                alert('Erreur lors du chargement des exercices. Veuillez réessayer.');
+                document.getElementById('diaporamaPage').style.display = 'none';
+                document.getElementById('selectionPage').style.display = 'flex';
+            }
+        }
+
+        // Variables globales (bereits oben deklariert, hier entfernt)
+
+        // Robuste Audio-Initialisierung
+        let audioInitialized = false;
+        
+        function initAudio() {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    console.log('AudioContext erstellt, State:', audioContext.state);
+                }
+                
+                // Immer versuchen zu aktivieren
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume().then(() => {
+                        console.log('AudioContext aktiviert, State:', audioContext.state);
+                        audioInitialized = true;
+                    }).catch(e => {
+                        console.error('AudioContext Resume Fehler:', e);
+                    });
+                } else if (audioContext.state === 'running') {
+                    audioInitialized = true;
+                    console.log('AudioContext bereits aktiv');
+                }
+            } catch (e) {
+                console.error('Audio Initialisierung Fehler:', e);
+                audioContext = null;
+                audioInitialized = false;
+            }
+        }
+        
+        // Erzwinge Audio-Aktivierung bei Benutzerinteraktion
+        function forceAudioInit() {
+            try {
+                if (!audioContext || audioContext.state !== 'running') {
+                    initAudio();
+                    
+                    // Zusätzlicher Versuch nach kurzer Verzögerung
+                    setTimeout(() => {
+                        try {
+                            if (audioContext && audioContext.state === 'suspended') {
+                                audioContext.resume().then(() => {
+                                    console.log('Audio force-aktiviert');
+                                    audioInitialized = true;
+                                }).catch(e => {
+                                    console.error('Resume Fehler:', e);
+                                    audioContext = null;
+                                    audioInitialized = false;
+                                });
+                            }
+                        } catch (e) {
+                            console.error('Force init timeout Fehler:', e);
+                            audioContext = null;
+                            audioInitialized = false;
+                        }
+                    }, 100);
+                }
+            } catch (e) {
+                console.error('Force init Fehler:', e);
+                audioContext = null;
+                audioInitialized = false;
+            }
+        }
+
+        // Sons simples avec Web Audio API (robuster)
+        async function jouerSon(frequence, duree, type = 'sine') {
+            try {
+                if (!audioContext) {
+                    initAudio(); // Versuche Audio zu initialisieren
+                }
+                
+                // AudioContext reaktivieren falls suspended
+                if (audioContext && audioContext.state === 'suspended') {
+                    await audioContext.resume();
+                    console.log('AudioContext reaktiviert');
+                }
+                
+                if (!audioContext || audioContext.state !== 'running') {
+                    console.log('AudioContext nicht verfügbar für Frequenz:', frequence, 'State:', audioContext?.state);
+                    return;
+                }
+                
+                const oscillateur = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillateur.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillateur.frequency.setValueAtTime(frequence, audioContext.currentTime);
+                oscillateur.type = type;
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duree);
+                
+                oscillateur.start(audioContext.currentTime);
+                oscillateur.stop(audioContext.currentTime + duree);
+                
+                console.log('Son joué:', frequence, 'Hz', 'State:', audioContext.state);
+            } catch (e) {
+                console.error('Erreur son:', e);
+                // Versuche AudioContext neu zu initialisieren
+                audioContext = null;
+                initAudio();
+            }
+        }
+
+        // Neue robuste Sound-Funktionen
+        function playSound(frequency, duration = 0.2, volume = 0.1) {
+            try {
+                // Erzwinge Audio-Initialisierung
+                forceAudioInit();
+                
+                // Warte kurz und versuche dann Sound zu spielen
+                setTimeout(() => {
+                    try {
+                        if (audioContext && audioContext.state === 'running') {
+                            const oscillator = audioContext.createOscillator();
+                            const gainNode = audioContext.createGain();
+                            
+                            // Fehlerbehandlung für Oscillator
+                            oscillator.onended = function() {
+                                // Cleanup - nichts zu tun
+                            };
+                            
+                            oscillator.connect(gainNode);
+                            gainNode.connect(audioContext.destination);
+                            
+                            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                            oscillator.type = 'sine';
+                            
+                            gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
+                            // Sicherere exponentialRamp
+                            gainNode.gain.exponentialRampToValueAtTime(Math.max(0.001, volume * 0.01), audioContext.currentTime + duration);
+                            
+                            oscillator.start(audioContext.currentTime);
+                            oscillator.stop(audioContext.currentTime + duration);
+                            
+                            console.log(`🔊 Sound gespielt: ${frequency}Hz, State: ${audioContext.state}`);
+                        } else {
+                            console.warn('❌ AudioContext nicht bereit:', audioContext?.state);
+                        }
+                    } catch (innerError) {
+                        console.error('🚫 Inner Sound Fehler:', innerError);
+                        // AudioContext neu initialisieren bei Fehlern
+                        audioContext = null;
+                        audioInitialized = false;
+                    }
+                }, 50);
+                
+            } catch (error) {
+                console.error('🚫 Outer Sound Fehler:', error);
+                // AudioContext neu initialisieren bei Fehlern
+                audioContext = null;
+                audioInitialized = false;
+            }
+        }
+
+        function sonCorrect() {
+            try {
+                console.log('🎉 Spiele Erfolgs-Sound...');
+                playSound(523.25, 0.3, 0.15); // Do
+                setTimeout(() => {
+                    try {
+                        playSound(659.25, 0.3, 0.15); // Mi
+                    } catch (e) {
+                        console.error('Erfolgs-Sound 2 Fehler:', e);
+                    }
+                }, 150);
+                setTimeout(() => {
+                    try {
+                        playSound(783.99, 0.4, 0.15); // Sol
+                    } catch (e) {
+                        console.error('Erfolgs-Sound 3 Fehler:', e);
+                    }
+                }, 300);
+            } catch (e) {
+                console.error('Erfolgs-Sound Fehler:', e);
+            }
+        }
+
+        function sonIncorrect() {
+            try {
+                console.log('❌ Spiele Fehler-Sound...');
+                playSound(220, 0.4, 0.15);
+                setTimeout(() => {
+                    try {
+                        playSound(196, 0.3, 0.1);
+                    } catch (e) {
+                        console.error('Fehler-Sound 2 Fehler:', e);
+                    }
+                }, 200);
+            } catch (e) {
+                console.error('Fehler-Sound Fehler:', e);
+            }
+        }
+        
+        // Alias für Erfolgsmeldung
+        function jouerSonReussite() {
+            sonCorrect();
+        }
+
+        // Animation de particules
+        function creerParticules(element, couleur = '#4caf50') {
+            const rect = element.getBoundingClientRect();
+            const centreX = rect.left + rect.width / 2;
+            const centreY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 12; i++) {
+                const particule = document.createElement('div');
+                particule.className = 'particule';
+                particule.style.background = couleur;
+                particule.style.left = centreX + 'px';
+                particule.style.top = centreY + 'px';
+                
+                const angle = (i / 12) * 2 * Math.PI;
+                const distance = 100 + Math.random() * 50;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+                
+                particule.style.setProperty('--dx', dx + 'px');
+                particule.style.setProperty('--dy', dy + 'px');
+                
+                document.body.appendChild(particule);
+                
+                setTimeout(() => {
+                    document.body.removeChild(particule);
+                }, 1000);
+            }
+        }
+
+        // Fallback-Funktion für alte Links (startet erste Étape)
+        async function demarrerExercices(niveau, difficulte) {
+            // Startet automatisch die erste Étape
+            demarrerEtape(niveau, difficulte, 0);
+        }
+
+        // Affichage d'un exercice
+        function afficherExercice() {
+            if (indexExercice >= exercicesActuels.length) {
+                indexExercice = 0; // Recommencer
+            }
+            
+            // Sicherstellen, dass alle UI-Elemente sichtbar sind
+            document.getElementById('inputReponse').style.display = 'block';
+            document.querySelector('.btns-reponse').style.display = 'flex';
+            document.getElementById('feedback').style.display = 'block';
+            document.querySelector('.navigation-buttons').style.display = 'flex';
+            
+            const exercice = exercicesActuels[indexExercice];
+            document.getElementById('questionExercice').textContent = exercice.question + ' = ?';
+            document.getElementById('inputReponse').value = '';
+            document.getElementById('inputReponse').disabled = false;
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('feedback').className = 'feedback';
+            document.getElementById('btnValider').style.display = 'inline-block';
+            document.getElementById('btnCorriger').style.display = 'none';
+            document.getElementById('btnContinuer').style.display = 'none';
+            // Progress Text aktualisieren
+            document.getElementById('progressText').textContent = 
+                `Exercice ${indexExercice + 1} / ${exercicesActuels.length}`;
+            
+            // Progress Bar aktualisieren
+            const progressPercentage = ((indexExercice + 1) / exercicesActuels.length) * 100;
+            document.getElementById('progressFill').style.width = `${progressPercentage}%`;
+            
+            reponseValidee = false;
+            
+            // Focus sur l'input
+            setTimeout(() => {
+                document.getElementById('inputReponse').focus();
+            }, 100);
+        }
+
+        // AudioContext bei Benutzerinteraktion aktivieren
+        function activerAudio() {
+            console.log('🔄 Aktiviere Audio...');
+            forceAudioInit();
+        }
+        
+        // Umfassendes Audio-System Test
+        function testAudioSystem() {
+            console.log('🧪 === AUDIO SYSTEM TEST ===');
+            console.log('AudioContext Status:', audioContext?.state);
+            console.log('Audio Initialized:', audioInitialized);
+            
+            // Erzwinge Initialisierung
+            forceAudioInit();
+            
+            // Test nach kurzer Verzögerung
+            setTimeout(() => {
+                console.log('Nach Force Init - AudioContext Status:', audioContext?.state);
+                
+                if (audioContext && audioContext.state === 'running') {
+                    console.log('✅ AudioContext läuft - teste Sounds...');
+                    
+                    // Test Erfolgs-Sound
+                    setTimeout(() => {
+                        console.log('🎉 Teste Erfolgs-Sound...');
+                        sonCorrect();
+                    }, 500);
+                    
+                    // Test Fehler-Sound
+                    setTimeout(() => {
+                        console.log('❌ Teste Fehler-Sound...');
+                        sonIncorrect();
+                    }, 2000);
+                    
+                } else {
+                    console.error('❌ AudioContext nicht aktiv:', audioContext?.state);
+                    alert('Audio funktioniert nicht. Bitte Browser-Konsole (F12) prüfen.');
+                }
+            }, 200);
+        }
+        
+        // Einfacher Sound-Test
+        function testSound() {
+            testAudioSystem();
+        }
+
+        // Validation de la réponse
+        function validerReponse() {
+            // AudioContext bei erster Benutzerinteraktion aktivieren
+            activerAudio();
+            const input = document.getElementById('inputReponse');
+            const reponseUtilisateur = parseFloat(input.value);
+            const exercice = exercicesActuels[indexExercice];
+            
+            if (isNaN(reponseUtilisateur)) {
+                alert('Veuillez entrer un nombre !');
+                return;
+            }
+            
+            const feedback = document.getElementById('feedback');
+            const tolerance = exercice.type === 'decimal' ? 0.01 : 0;
+            const estCorrect = Math.abs(reponseUtilisateur - exercice.reponse) <= tolerance;
+            
+            // Statistiken aktualisieren
+            totalReponses++;
+            if (estCorrect) {
+                bonnesReponses++;
+            }
+            
+            if (estCorrect) {
+                feedback.textContent = '🎉 Bravo ! C\'est correct !';
+                feedback.className = 'feedback correct';
+                sonCorrect();
+                creerParticules(document.getElementById('exercice-actuel'), '#4caf50');
+            } else {
+                feedback.textContent = `❌ Pas tout à fait... La réponse est ${exercice.reponse}`;
+                feedback.className = 'feedback incorrect';
+                sonIncorrect();
+            }
+            
+            input.disabled = true;
+            document.getElementById('btnValider').style.display = 'none';
+            document.getElementById('btnCorriger').style.display = 'inline-block';
+            
+            // Nur "Continuer" zeigen wenn es NICHT die letzte Aufgabe ist
+            if (indexExercice < exercicesActuels.length - 1) {
+                document.getElementById('btnContinuer').style.display = 'inline-block';
+            } else {
+                document.getElementById('btnContinuer').style.display = 'none';
+                // Bei letzter Aufgabe: Bewertungs-Button anzeigen
+                setTimeout(() => {
+                    afficherBewertungsButton();
+                }, 500);
+            }
+            
+            reponseValidee = true;
+        }
+
+        // Fonction de correction
+        function corrigerReponse() {
+            document.getElementById('inputReponse').disabled = false;
+            document.getElementById('inputReponse').focus();
+            document.getElementById('inputReponse').select();
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('feedback').className = 'feedback';
+            document.getElementById('btnValider').style.display = 'inline-block';
+            document.getElementById('btnCorriger').style.display = 'none';
+            document.getElementById('btnContinuer').style.display = 'none';
+            reponseValidee = false;
+        }
+        
+        // Neue Funktion zum Fortfahren
+        function continuerExercice() {
+            if (indexExercice < exercicesActuels.length - 1) {
+                indexExercice++;
+                afficherExercice();
+            } else {
+                // Ende erreicht - Button für Bewertung anzeigen
+                afficherBewertungsButton();
+            }
+        }
+
+        // Navigation (nur noch Précédent, da Continuer den Suivant ersetzt)
+
+        function exercicePrecedent() {
+            if (indexExercice > 0) {
+                indexExercice--;
+                afficherExercice();
+            }
+            // Am Anfang bleibt man beim ersten Exercice
+        }
+        
+        // Button für Bewertung anzeigen
+        function afficherBewertungsButton() {
+            const feedback = document.getElementById('feedback');
+            
+            // Prüfen ob Button bereits existiert
+            if (feedback.querySelector('.bewertungs-button')) {
+                return; // Button bereits vorhanden
+            }
+            
+            // Bewertungs-Button hinzufügen
+            const bewertungsButton = document.createElement('div');
+            bewertungsButton.className = 'bewertungs-button';
+            bewertungsButton.style.marginTop = '20px';
+            bewertungsButton.innerHTML = `
+                <button onclick="afficherBewertung()" style="
+                    padding: 15px 30px; 
+                    font-size: 1.2rem; 
+                    background: linear-gradient(135deg, #4caf50, #66bb6a); 
+                    color: white; 
+                    border: none; 
+                    border-radius: 12px; 
+                    cursor: pointer; 
+                    box-shadow: 0 4px 15px rgba(76,175,80,0.3);
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                    🏆 Voir mon résultat
+                </button>
+            `;
+            
+            feedback.appendChild(bewertungsButton);
+        }
+        
+        // Bewertung basierend auf Leistung
+        function afficherBewertung() {
+            const etapeName = matrixData[niveauActuel][difficulteActuelle][etapeActuelle];
+            const pourcentage = Math.round((bonnesReponses / totalReponses) * 100);
+            
+            let emoji, couleur, message, motivation;
+            
+            if (pourcentage >= 90) {
+                emoji = "🏆";
+                couleur = "#FFD700";
+                message = "Excellent !";
+                motivation = "Tu es un champion des mathématiques ! Continue comme ça !";
+            } else if (pourcentage >= 80) {
+                emoji = "🌟";
+                couleur = "#4caf50";
+                message = "Très bien !";
+                motivation = "Superbe travail ! Tu maîtrises bien cette étape !";
+            } else if (pourcentage >= 70) {
+                emoji = "👍";
+                couleur = "#2196f3";
+                message = "Bien joué !";
+                motivation = "C'est un bon résultat ! Avec un peu d'entraînement, tu seras parfait !";
+            } else if (pourcentage >= 60) {
+                emoji = "💪";
+                couleur = "#ff9800";
+                message = "Pas mal !";
+                motivation = "Tu progresses bien ! Continue à t'entraîner, tu vas y arriver !";
+            } else {
+                emoji = "🎯";
+                couleur = "#f44336";
+                message = "Continue tes efforts !";
+                motivation = "Ne te décourage pas ! Chaque erreur est une occasion d'apprendre !";
+            }
+            
+            document.getElementById('questionExercice').innerHTML = `
+                <div style="text-align: center; color: ${couleur}; font-size: 1.5rem;">
+                    ${emoji} ${message} ${emoji}<br>
+                    <div style="font-size: 2rem; margin: 15px 0; color: ${couleur};">
+                        ${bonnesReponses}/${totalReponses} (${pourcentage}%)
+                    </div>
+                    <div style="font-size: 1.1rem; color: #333; margin: 15px 0; line-height: 1.4;">
+                        ${motivation}
+                    </div>
+                    <div style="font-size: 1rem; color: #666; margin: 10px 0;">
+                        Étape terminée : <strong>"${etapeName}"</strong>
+                    </div>
+                    <div style="margin-top: 25px;">
+                        <button onclick="retourSelection()" style="padding: 15px 30px; font-size: 1.1rem; background: ${couleur}; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                            ✨ Choisir une nouvelle étape
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Eingabefeld und Buttons verstecken
+            document.getElementById('inputReponse').style.display = 'none';
+            document.querySelector('.btns-reponse').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+            document.querySelector('.navigation-buttons').style.display = 'none';
+            
+            // Sound je nach Leistung
+            if (pourcentage >= 80) {
+                jouerSonReussite();
+                // Partikel-Animation bei guter Leistung
+                creerParticules(document.getElementById('exercice-actuel'), couleur);
+            } else {
+                // Motivierender Sound auch bei schwächerer Leistung
+                setTimeout(() => jouerSon(440, 0.3), 100);
+                setTimeout(() => jouerSon(523.25, 0.4), 400);
+            }
+        }
+        
+        // Alte Erfolgsmeldung (wird nicht mehr verwendet)
+        function afficherErfolgsmeldung() {
+            // Diese Funktion wird durch afficherBewertung ersetzt
+            afficherBewertung();
+        }
+
+        function retourSelection() {
+            document.getElementById('diaporamaPage').style.display = 'none';
+            document.getElementById('selectionPage').style.display = 'flex';
+        }
+
+        // Gestion du clavier
+        document.addEventListener('keydown', function(event) {
+            if (document.getElementById('diaporamaPage').style.display === 'flex') {
+                // AudioContext bei Tastatureingabe aktivieren
+                activerAudio();
+                
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    if (!reponseValidee) {
+                        validerReponse();
+                    } else {
+                        continuerExercice();
+                    }
+                } else if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    exercicePrecedent();
+                } else if (event.key === 'Escape') {
+                    event.preventDefault();
+                    retourSelection();
+                }
+            }
+        });
+
+        // Globaler Error-Handler für Audio-Probleme
+        window.addEventListener('error', function(event) {
+            console.error('🚫 Globaler Fehler:', event.error);
+            if (event.error && event.error.message && event.error.message.includes('AudioContext')) {
+                console.log('🔄 AudioContext Fehler erkannt - Neuinitialisierung...');
+                audioContext = null;
+                audioInitialized = false;
+            }
+        });
+
+        // Auto-focus sur l'input au chargement
+        window.addEventListener('load', function() {
+            // Animation d'entrée pour le titre
+            setTimeout(() => {
+                document.querySelector('.titre-principal').style.opacity = '1';
+            }, 300);
+            
+            // Standardmäßig CE1 Matrix anzeigen
+            selectionnerNiveau('ce1');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{
+  "etapes": [
+    {
+      "nom": "Addition avec retenue",
+      "description": "Additions complexes jusqu'à 100",
+      "exercices": [
+        {"type": "addition", "question": "47 + 28", "reponse": 75, "categorie": "calcul"},
+        {"type": "addition", "question": "59 + 36", "reponse": 95, "categorie": "calcul"},
+        {"type": "addition", "question": "68 + 27", "reponse": 95, "categorie": "calcul"},
+        {"type": "addition", "question": "39 + 45", "reponse": 84, "categorie": "calcul"},
+        {"type": "addition", "question": "56 + 38", "reponse": 94, "categorie": "calcul"},
+        {"type": "addition", "question": "74 + 19", "reponse": 93, "categorie": "calcul"},
+        {"type": "addition", "question": "48 + 37", "reponse": 85, "categorie": "calcul"},
+        {"type": "addition", "question": "65 + 29", "reponse": 94, "categorie": "calcul"},
+        {"type": "addition", "question": "57 + 35", "reponse": 92, "categorie": "calcul"},
+        {"type": "addition", "question": "49 + 46", "reponse": 95, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Soustraction avec emprunt",
+      "description": "Soustractions complexes",
+      "exercices": [
+        {"type": "soustraction", "question": "82 - 47", "reponse": 35, "categorie": "calcul"},
+        {"type": "soustraction", "question": "91 - 58", "reponse": 33, "categorie": "calcul"},
+        {"type": "soustraction", "question": "75 - 39", "reponse": 36, "categorie": "calcul"},
+        {"type": "soustraction", "question": "84 - 56", "reponse": 28, "categorie": "calcul"},
+        {"type": "soustraction", "question": "93 - 67", "reponse": 26, "categorie": "calcul"},
+        {"type": "soustraction", "question": "86 - 49", "reponse": 37, "categorie": "calcul"},
+        {"type": "soustraction", "question": "72 - 38", "reponse": 34, "categorie": "calcul"},
+        {"type": "soustraction", "question": "95 - 57", "reponse": 38, "categorie": "calcul"},
+        {"type": "soustraction", "question": "83 - 46", "reponse": 37, "categorie": "calcul"},
+        {"type": "soustraction", "question": "74 - 28", "reponse": 46, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Tables jusqu'à 5",
+      "description": "Tables de 2, 3, 4, 5",
+      "exercices": [
+        {"type": "multiplication", "question": "3 × 6", "reponse": 18, "categorie": "calcul"},
+        {"type": "multiplication", "question": "4 × 7", "reponse": 28, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 8", "reponse": 40, "categorie": "calcul"},
+        {"type": "multiplication", "question": "3 × 9", "reponse": 27, "categorie": "calcul"},
+        {"type": "multiplication", "question": "4 × 6", "reponse": 24, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 7", "reponse": 35, "categorie": "calcul"},
+        {"type": "multiplication", "question": "3 × 8", "reponse": 24, "categorie": "calcul"},
+        {"type": "multiplication", "question": "4 × 9", "reponse": 36, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 6", "reponse": 30, "categorie": "calcul"},
+        {"type": "multiplication", "question": "4 × 8", "reponse": 32, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Division simple",
+      "description": "Premières divisions",
+      "exercices": [
+        {"type": "division", "question": "10 ÷ 2", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "15 ÷ 3", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "20 ÷ 4", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "25 ÷ 5", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "12 ÷ 3", "reponse": 4, "categorie": "calcul"},
+        {"type": "division", "question": "16 ÷ 4", "reponse": 4, "categorie": "calcul"},
+        {"type": "division", "question": "18 ÷ 2", "reponse": 9, "categorie": "calcul"},
+        {"type": "division", "question": "21 ÷ 3", "reponse": 7, "categorie": "calcul"},
+        {"type": "division", "question": "24 ÷ 4", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "30 ÷ 5", "reponse": 6, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Révisions complètes",
+      "description": "Mélange de toutes les opérations",
+      "exercices": [
+        {"type": "addition", "question": "67 + 28", "reponse": 95, "categorie": "calcul"},
+        {"type": "soustraction", "question": "85 - 39", "reponse": 46, "categorie": "calcul"},
+        {"type": "multiplication", "question": "7 × 8", "reponse": 56, "categorie": "calcul"},
+        {"type": "division", "question": "36 ÷ 6", "reponse": 6, "categorie": "calcul"},
+        {"type": "addition", "question": "49 + 37", "reponse": 86, "categorie": "calcul"},
+        {"type": "soustraction", "question": "92 - 48", "reponse": 44, "categorie": "calcul"},
+        {"type": "multiplication", "question": "9 × 6", "reponse": 54, "categorie": "calcul"},
+        {"type": "division", "question": "42 ÷ 7", "reponse": 6, "categorie": "calcul"},
+        {"type": "addition", "question": "58 + 34", "reponse": 92, "categorie": "calcul"},
+        {"type": "multiplication", "question": "8 × 7", "reponse": 56, "categorie": "calcul"}
+      ]
+    }
+  ]
+}

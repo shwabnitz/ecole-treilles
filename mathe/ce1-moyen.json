@@ -1,0 +1,84 @@
+{
+  "etapes": [
+    {
+      "nom": "Addition jusqu'à 20",
+      "description": "Additions avec passage de la dizaine",
+      "exercices": [
+        {"type": "addition", "question": "8 + 3", "reponse": 11, "categorie": "calcul"},
+        {"type": "addition", "question": "9 + 2", "reponse": 11, "categorie": "calcul"},
+        {"type": "addition", "question": "7 + 5", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "8 + 4", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "9 + 4", "reponse": 13, "categorie": "calcul"},
+        {"type": "addition", "question": "6 + 7", "reponse": 13, "categorie": "calcul"},
+        {"type": "addition", "question": "8 + 6", "reponse": 14, "categorie": "calcul"},
+        {"type": "addition", "question": "9 + 5", "reponse": 14, "categorie": "calcul"},
+        {"type": "addition", "question": "7 + 8", "reponse": 15, "categorie": "calcul"},
+        {"type": "addition", "question": "9 + 6", "reponse": 15, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Soustraction jusqu'à 20",
+      "description": "Soustractions avec emprunt simple",
+      "exercices": [
+        {"type": "soustraction", "question": "11 - 2", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "12 - 3", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "13 - 4", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "14 - 5", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "15 - 6", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "16 - 7", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "17 - 8", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "18 - 9", "reponse": 9, "categorie": "calcul"},
+        {"type": "soustraction", "question": "20 - 7", "reponse": 13, "categorie": "calcul"},
+        {"type": "soustraction", "question": "19 - 6", "reponse": 13, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Doubles et moitiés",
+      "description": "Calculs avec doubles",
+      "exercices": [
+        {"type": "addition", "question": "5 + 5", "reponse": 10, "categorie": "calcul"},
+        {"type": "addition", "question": "6 + 6", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "7 + 7", "reponse": 14, "categorie": "calcul"},
+        {"type": "addition", "question": "8 + 8", "reponse": 16, "categorie": "calcul"},
+        {"type": "addition", "question": "9 + 9", "reponse": 18, "categorie": "calcul"},
+        {"type": "soustraction", "question": "10 - 5", "reponse": 5, "categorie": "calcul"},
+        {"type": "soustraction", "question": "12 - 6", "reponse": 6, "categorie": "calcul"},
+        {"type": "soustraction", "question": "14 - 7", "reponse": 7, "categorie": "calcul"},
+        {"type": "soustraction", "question": "16 - 8", "reponse": 8, "categorie": "calcul"},
+        {"type": "soustraction", "question": "18 - 9", "reponse": 9, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Calculs rapides",
+      "description": "Entraînement à la rapidité",
+      "exercices": [
+        {"type": "addition", "question": "10 + 5", "reponse": 15, "categorie": "calcul"},
+        {"type": "addition", "question": "10 + 7", "reponse": 17, "categorie": "calcul"},
+        {"type": "soustraction", "question": "20 - 5", "reponse": 15, "categorie": "calcul"},
+        {"type": "soustraction", "question": "20 - 8", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "12 + 5", "reponse": 17, "categorie": "calcul"},
+        {"type": "addition", "question": "13 + 4", "reponse": 17, "categorie": "calcul"},
+        {"type": "soustraction", "question": "17 - 5", "reponse": 12, "categorie": "calcul"},
+        {"type": "soustraction", "question": "19 - 9", "reponse": 10, "categorie": "calcul"},
+        {"type": "addition", "question": "11 + 7", "reponse": 18, "categorie": "calcul"},
+        {"type": "soustraction", "question": "18 - 7", "reponse": 11, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Révisions complètes",
+      "description": "Mélange de toutes les opérations apprises",
+      "exercices": [
+        {"type": "addition", "question": "14 + 8", "reponse": 22, "categorie": "calcul"},
+        {"type": "soustraction", "question": "19 - 7", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "16 + 9", "reponse": 25, "categorie": "calcul"},
+        {"type": "soustraction", "question": "23 - 8", "reponse": 15, "categorie": "calcul"},
+        {"type": "addition", "question": "17 + 6", "reponse": 23, "categorie": "calcul"},
+        {"type": "soustraction", "question": "25 - 9", "reponse": 16, "categorie": "calcul"},
+        {"type": "addition", "question": "18 + 7", "reponse": 25, "categorie": "calcul"},
+        {"type": "soustraction", "question": "24 - 6", "reponse": 18, "categorie": "calcul"},
+        {"type": "addition", "question": "15 + 9", "reponse": 24, "categorie": "calcul"},
+        {"type": "soustraction", "question": "22 - 7", "reponse": 15, "categorie": "calcul"}
+      ]
+    }
+  ]
+}

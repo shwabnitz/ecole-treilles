@@ -1,0 +1,22 @@
+[
+    {"type": "multiplication", "question": "47 × 23", "reponse": 1081, "categorie": "calcul"},
+    {"type": "division", "question": "348 ÷ 12", "reponse": 29, "categorie": "calcul"},
+    {"type": "addition", "question": "1247 + 896", "reponse": 2143, "categorie": "calcul"},
+    {"type": "soustraction", "question": "1534 - 789", "reponse": 745, "categorie": "calcul"},
+    {"type": "multiplication", "question": "38 × 26", "reponse": 988, "categorie": "calcul"},
+    {"type": "division", "question": "456 ÷ 24", "reponse": 19, "categorie": "calcul"},
+    {"type": "addition", "question": "1389 + 674", "reponse": 2063, "categorie": "calcul"},
+    {"type": "soustraction", "question": "1672 - 895", "reponse": 777, "categorie": "calcul"},
+    {"type": "multiplication", "question": "29 × 34", "reponse": 986, "categorie": "calcul"},
+    {"type": "division", "question": "552 ÷ 23", "reponse": 24, "categorie": "calcul"},
+    {"type": "addition", "question": "1567 + 789", "reponse": 2356, "categorie": "calcul"},
+    {"type": "soustraction", "question": "1834 - 967", "reponse": 867, "categorie": "calcul"},
+    {"type": "multiplication", "question": "36 × 28", "reponse": 1008, "categorie": "calcul"},
+    {"type": "division", "question": "624 ÷ 26", "reponse": 24, "categorie": "calcul"},
+    {"type": "addition", "question": "1734 + 896", "reponse": 2630, "categorie": "calcul"},
+    {"type": "soustraction", "question": "1945 - 778", "reponse": 1167, "categorie": "calcul"},
+    {"type": "multiplication", "question": "42 × 31", "reponse": 1302, "categorie": "calcul"},
+    {"type": "division", "question": "748 ÷ 22", "reponse": 34, "categorie": "calcul"},
+    {"type": "addition", "question": "1856 + 679", "reponse": 2535, "categorie": "calcul"},
+    {"type": "soustraction", "question": "2074 - 896", "reponse": 1178, "categorie": "calcul"}
+]

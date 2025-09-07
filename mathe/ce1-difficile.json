@@ -1,0 +1,84 @@
+{
+  "etapes": [
+    {
+      "nom": "Addition avec retenue",
+      "description": "Additions complexes jusqu'à 50",
+      "exercices": [
+        {"type": "addition", "question": "15 + 7", "reponse": 22, "categorie": "calcul"},
+        {"type": "addition", "question": "18 + 5", "reponse": 23, "categorie": "calcul"},
+        {"type": "addition", "question": "19 + 8", "reponse": 27, "categorie": "calcul"},
+        {"type": "addition", "question": "16 + 9", "reponse": 25, "categorie": "calcul"},
+        {"type": "addition", "question": "24 + 8", "reponse": 32, "categorie": "calcul"},
+        {"type": "addition", "question": "27 + 6", "reponse": 33, "categorie": "calcul"},
+        {"type": "addition", "question": "29 + 7", "reponse": 36, "categorie": "calcul"},
+        {"type": "addition", "question": "35 + 8", "reponse": 43, "categorie": "calcul"},
+        {"type": "addition", "question": "38 + 9", "reponse": 47, "categorie": "calcul"},
+        {"type": "addition", "question": "26 + 17", "reponse": 43, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Soustraction avec emprunt",
+      "description": "Soustractions complexes",
+      "exercices": [
+        {"type": "soustraction", "question": "22 - 5", "reponse": 17, "categorie": "calcul"},
+        {"type": "soustraction", "question": "31 - 7", "reponse": 24, "categorie": "calcul"},
+        {"type": "soustraction", "question": "40 - 8", "reponse": 32, "categorie": "calcul"},
+        {"type": "soustraction", "question": "35 - 9", "reponse": 26, "categorie": "calcul"},
+        {"type": "soustraction", "question": "43 - 15", "reponse": 28, "categorie": "calcul"},
+        {"type": "soustraction", "question": "50 - 17", "reponse": 33, "categorie": "calcul"},
+        {"type": "soustraction", "question": "42 - 18", "reponse": 24, "categorie": "calcul"},
+        {"type": "soustraction", "question": "36 - 19", "reponse": 17, "categorie": "calcul"},
+        {"type": "soustraction", "question": "45 - 27", "reponse": 18, "categorie": "calcul"},
+        {"type": "soustraction", "question": "38 - 29", "reponse": 9, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Premières multiplications",
+      "description": "Tables de 2 et 5",
+      "exercices": [
+        {"type": "multiplication", "question": "2 × 2", "reponse": 4, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 3", "reponse": 6, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 4", "reponse": 8, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 5", "reponse": 10, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 2", "reponse": 10, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 3", "reponse": 15, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 4", "reponse": 20, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 6", "reponse": 12, "categorie": "calcul"},
+        {"type": "multiplication", "question": "2 × 7", "reponse": 14, "categorie": "calcul"},
+        {"type": "multiplication", "question": "5 × 5", "reponse": 25, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Calculs mixtes avancés",
+      "description": "Mélange de toutes les opérations",
+      "exercices": [
+        {"type": "addition", "question": "28 + 15", "reponse": 43, "categorie": "calcul"},
+        {"type": "soustraction", "question": "47 - 19", "reponse": 28, "categorie": "calcul"},
+        {"type": "multiplication", "question": "3 × 8", "reponse": 24, "categorie": "calcul"},
+        {"type": "addition", "question": "36 + 27", "reponse": 63, "categorie": "calcul"},
+        {"type": "soustraction", "question": "52 - 28", "reponse": 24, "categorie": "calcul"},
+        {"type": "multiplication", "question": "4 × 7", "reponse": 28, "categorie": "calcul"},
+        {"type": "addition", "question": "49 + 18", "reponse": 67, "categorie": "calcul"},
+        {"type": "soustraction", "question": "60 - 35", "reponse": 25, "categorie": "calcul"},
+        {"type": "multiplication", "question": "6 × 5", "reponse": 30, "categorie": "calcul"},
+        {"type": "addition", "question": "37 + 29", "reponse": 66, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Maîtrise complète",
+      "description": "Défis et révisions de toutes les compétences",
+      "exercices": [
+        {"type": "addition", "question": "34 + 29", "reponse": 63, "categorie": "calcul"},
+        {"type": "soustraction", "question": "51 - 26", "reponse": 25, "categorie": "calcul"},
+        {"type": "multiplication", "question": "7 × 4", "reponse": 28, "categorie": "calcul"},
+        {"type": "addition", "question": "46 + 38", "reponse": 84, "categorie": "calcul"},
+        {"type": "soustraction", "question": "63 - 37", "reponse": 26, "categorie": "calcul"},
+        {"type": "multiplication", "question": "8 × 6", "reponse": 48, "categorie": "calcul"},
+        {"type": "addition", "question": "57 + 25", "reponse": 82, "categorie": "calcul"},
+        {"type": "soustraction", "question": "74 - 48", "reponse": 26, "categorie": "calcul"},
+        {"type": "multiplication", "question": "9 × 5", "reponse": 45, "categorie": "calcul"},
+        {"type": "addition", "question": "68 + 17", "reponse": 85, "categorie": "calcul"}
+      ]
+    }
+  ]
+}

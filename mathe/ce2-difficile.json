@@ -1,0 +1,84 @@
+{
+  "etapes": [
+    {
+      "nom": "Calculs jusqu'à 1000",
+      "description": "Grandes additions et soustractions",
+      "exercices": [
+        {"type": "addition", "question": "245 + 138", "reponse": 383, "categorie": "calcul"},
+        {"type": "addition", "question": "367 + 254", "reponse": 621, "categorie": "calcul"},
+        {"type": "soustraction", "question": "456 - 189", "reponse": 267, "categorie": "calcul"},
+        {"type": "soustraction", "question": "523 - 276", "reponse": 247, "categorie": "calcul"},
+        {"type": "addition", "question": "189 + 345", "reponse": 534, "categorie": "calcul"},
+        {"type": "addition", "question": "278 + 456", "reponse": 734, "categorie": "calcul"},
+        {"type": "soustraction", "question": "634 - 287", "reponse": 347, "categorie": "calcul"},
+        {"type": "soustraction", "question": "745 - 398", "reponse": 347, "categorie": "calcul"},
+        {"type": "addition", "question": "456 + 289", "reponse": 745, "categorie": "calcul"},
+        {"type": "soustraction", "question": "812 - 345", "reponse": 467, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Toutes les tables",
+      "description": "Tables de 6, 7, 8, 9",
+      "exercices": [
+        {"type": "multiplication", "question": "6 × 7", "reponse": 42, "categorie": "calcul"},
+        {"type": "multiplication", "question": "7 × 8", "reponse": 56, "categorie": "calcul"},
+        {"type": "multiplication", "question": "8 × 9", "reponse": 72, "categorie": "calcul"},
+        {"type": "multiplication", "question": "6 × 9", "reponse": 54, "categorie": "calcul"},
+        {"type": "multiplication", "question": "7 × 6", "reponse": 42, "categorie": "calcul"},
+        {"type": "multiplication", "question": "8 × 7", "reponse": 56, "categorie": "calcul"},
+        {"type": "multiplication", "question": "9 × 6", "reponse": 54, "categorie": "calcul"},
+        {"type": "multiplication", "question": "7 × 9", "reponse": 63, "categorie": "calcul"},
+        {"type": "multiplication", "question": "8 × 6", "reponse": 48, "categorie": "calcul"},
+        {"type": "multiplication", "question": "9 × 8", "reponse": 72, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Division avec reste",
+      "description": "Divisions plus complexes",
+      "exercices": [
+        {"type": "division", "question": "17 ÷ 3", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "22 ÷ 4", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "29 ÷ 5", "reponse": 5, "categorie": "calcul"},
+        {"type": "division", "question": "38 ÷ 6", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "45 ÷ 7", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "52 ÷ 8", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "59 ÷ 9", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "26 ÷ 4", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "33 ÷ 5", "reponse": 6, "categorie": "calcul"},
+        {"type": "division", "question": "40 ÷ 6", "reponse": 6, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Problèmes",
+      "description": "Calculs en contexte",
+      "exercices": [
+        {"type": "addition", "question": "125 + 89", "reponse": 214, "categorie": "calcul"},
+        {"type": "soustraction", "question": "234 - 67", "reponse": 167, "categorie": "calcul"},
+        {"type": "multiplication", "question": "12 × 8", "reponse": 96, "categorie": "calcul"},
+        {"type": "division", "question": "84 ÷ 7", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "156 + 78", "reponse": 234, "categorie": "calcul"},
+        {"type": "soustraction", "question": "345 - 89", "reponse": 256, "categorie": "calcul"},
+        {"type": "multiplication", "question": "15 × 6", "reponse": 90, "categorie": "calcul"},
+        {"type": "division", "question": "72 ÷ 9", "reponse": 8, "categorie": "calcul"},
+        {"type": "addition", "question": "267 + 145", "reponse": 412, "categorie": "calcul"},
+        {"type": "multiplication", "question": "18 × 4", "reponse": 72, "categorie": "calcul"}
+      ]
+    },
+    {
+      "nom": "Défis mathématiques",
+      "description": "Calculs avancés et défis",
+      "exercices": [
+        {"type": "addition", "question": "456 + 378", "reponse": 834, "categorie": "calcul"},
+        {"type": "soustraction", "question": "623 - 287", "reponse": 336, "categorie": "calcul"},
+        {"type": "multiplication", "question": "25 × 4", "reponse": 100, "categorie": "calcul"},
+        {"type": "division", "question": "144 ÷ 12", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "789 + 156", "reponse": 945, "categorie": "calcul"},
+        {"type": "soustraction", "question": "500 - 234", "reponse": 266, "categorie": "calcul"},
+        {"type": "multiplication", "question": "15 × 8", "reponse": 120, "categorie": "calcul"},
+        {"type": "division", "question": "96 ÷ 8", "reponse": 12, "categorie": "calcul"},
+        {"type": "addition", "question": "345 + 567", "reponse": 912, "categorie": "calcul"},
+        {"type": "multiplication", "question": "12 × 12", "reponse": 144, "categorie": "calcul"}
+      ]
+    }
+  ]
+}

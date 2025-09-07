@@ -1,0 +1,22 @@
+[
+    {"type": "multiplication", "question": "247 × 189", "reponse": 46683, "categorie": "calcul"},
+    {"type": "division", "question": "12648 ÷ 136", "reponse": 93, "categorie": "calcul"},
+    {"type": "fraction", "question": "5/6 - 2/9", "reponse": 0.611, "categorie": "fraction"},
+    {"type": "decimal", "question": "1247.89 × 3.6", "reponse": 4492.404, "categorie": "decimal"},
+    {"type": "pourcentage", "question": "137% de 240", "reponse": 328.8, "categorie": "pourcentage"},
+    {"type": "multiplication", "question": "168 × 247", "reponse": 41496, "categorie": "calcul"},
+    {"type": "division", "question": "15372 ÷ 123", "reponse": 125, "categorie": "calcul"},
+    {"type": "decimal", "question": "2345.67 ÷ 4.8", "reponse": 488.68, "categorie": "decimal"},
+    {"type": "pourcentage", "question": "78% de 456", "reponse": 355.68, "categorie": "pourcentage"},
+    {"type": "multiplication", "question": "359 × 186", "reponse": 66774, "categorie": "calcul"},
+    {"type": "division", "question": "18954 ÷ 147", "reponse": 129, "categorie": "calcul"},
+    {"type": "decimal", "question": "3456.78 × 2.9", "reponse": 10024.662, "categorie": "decimal"},
+    {"type": "pourcentage", "question": "125% de 384", "reponse": 480, "categorie": "pourcentage"},
+    {"type": "multiplication", "question": "284 × 193", "reponse": 54812, "categorie": "calcul"},
+    {"type": "division", "question": "21735 ÷ 159", "reponse": 137, "categorie": "calcul"},
+    {"type": "decimal", "question": "4567.89 ÷ 6.7", "reponse": 681.63, "categorie": "decimal"},
+    {"type": "pourcentage", "question": "89% de 567", "reponse": 504.63, "categorie": "pourcentage"},
+    {"type": "multiplication", "question": "376 × 248", "reponse": 93248, "categorie": "calcul"},
+    {"type": "division", "question": "24816 ÷ 168", "reponse": 147.71, "categorie": "calcul"},
+    {"type": "decimal", "question": "5678.91 × 4.3", "reponse": 24419.313, "categorie": "decimal"}
+]
